@@ -6,7 +6,7 @@
 ### in patients with chronic discogenic low back pain 
 ###
 ### Date created: 17/01/2022
-### Date last change: 23/05/2022
+### Date last change: 30/05/2022
 ###
 ### 
 ### sessionInfo()
@@ -28,21 +28,16 @@
 ###   [1] compiler_4.1.2 tools_4.1.2
 ################################################################################
 
-# Read in data
+rm(list = ls())
+
+### Read in data
 setwd("/home/sander/Documents/work/research/gelstix/data")
-load("GELSTIX_data.Rda")
-table(d$plac_gelstix_6m.factor) # Randomisation
-d <- subset(d, !is.na(d$plac_gelstix_6m.factor)) # Notify Eva
+load("GELSTIX_data_final.Rda")
+load("GELSTIX_subset_imp_final.Rda")
 
-# Explore dataset
-d$record_id
-length(d$record_id) - length(unique(d$record_id)) # 0 denotes no double entries
-
-# Eligibility criteria
-sum(d$eligibility.factor == "Yes", na.rm = TRUE) # 1 NA, what happened?
-d[is.na(d$eligibility.factor), 8:26] # Seems OK!
-
-# Baseline table, to be stratified!
+### Baseline table
+table(d$plac_gelstix_6m.factor)
+table(di$plac_gelstix_6m.factor)
 
 # Age
 aggregate(d$ttt_sgage_1, by = list(d$plac_gelstix_6m.factor), FUN =
@@ -57,46 +52,4 @@ round(prop.table(table(d$ttt_sgsex_1.factor, d$plac_gelstix_6m.factor), 2)*100, 
 table(d$ttt_sj_smo_1.factor, d$plac_gelstix_6m.factor)
 round(prop.table(table(d$ttt_sj_smo_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 
-### Outcomes
-# 1 week follow-up pain diary
-d$pw1 <- rowMeans(data.frame(d$pd_d1_9_1w_1, d$pd_d1_14_1w_1, d$pd_d1_20_1w_1,
-                             d$pd_d2_9_1w_1, d$pd_d2_14_1w_1, d$pd_d2_20_1w_1,
-                             d$pd_d3_9_1w_1, d$pd_d3_14_1w_1, d$pd_d3_20_1w_1,
-                             d$pd_d4_9_1w_1, d$pd_d4_14_1w_1, d$pd_d4_20_1w_1,
-                             d$pd_d5_9_1w_1, d$pd_d5_14_1w_1, d$pd_d5_20_1w_1),
-                  na.rm = TRUE)
-
-# 1 month follow-up pain diary
-d$pm1 <- rowMeans(data.frame(d$pd_d1_9_1m_1, d$pd_d1_14_1m_1, d$pd_d1_20_1m_1,
-                             d$pd_d2_9_1m_1, d$pd_d2_14_1m_1, d$pd_d2_20_1m_1,
-                             d$pd_d3_9_1m_1, d$pd_d3_14_1m_1, d$pd_d3_20_1m_1,
-                             d$pd_d4_9_1m_1, d$pd_d4_14_1m_1, d$pd_d4_20_1m_1,
-                             d$pd_d5_9_1m_1, d$pd_d5_14_1m_1, d$pd_d5_20_1m_1),
-                  na.rm = TRUE)
-
-# 3 month follow-up pain diary
-d$pm3 <- rowMeans(data.frame(d$pd_d1_9_3m_1, d$pd_d1_14_3m_1, d$pd_d1_20_3m_1,
-                             d$pd_d2_9_3m_1, d$pd_d2_14_3m_1, d$pd_d2_20_3m_1,
-                             d$pd_d3_9_3m_1, d$pd_d3_14_3m_1, d$pd_d3_20_3m_1,
-                             d$pd_d4_9_3m_1, d$pd_d4_14_3m_1, d$pd_d4_20_3m_1,
-                             d$pd_d5_9_3m_1, d$pd_d5_14_3m_1, d$pd_d5_20_3m_1),
-                  na.rm = TRUE)
-
-# 6 month follow-up pain diary
-d$pm6 <- rowMeans(data.frame(d$pd_d1_9_6m_1, d$pd_d1_14_6m_1, d$pd_d1_20_6m_1,
-                             d$pd_d2_9_6m_1, d$pd_d2_14_6m_1, d$pd_d2_20_6m_1,
-                             d$pd_d3_9_6m_1, d$pd_d3_14_6m_1, d$pd_d3_20_6m_1,
-                             d$pd_d4_9_6m_1, d$pd_d4_14_6m_1, d$pd_d4_20_6m_1,
-                             d$pd_d5_9_6m_1, d$pd_d5_14_6m_1, d$pd_d5_20_6m_1),
-                  na.rm = TRUE)
-
-# 12 month follow-up pain diary
-d$pm12 <- rowMeans(data.frame(d$pd_d1_9_12m_1, d$pd_d1_14_12m_1, d$pd_d1_20_12m_1,
-                              d$pd_d2_9_12m_1, d$pd_d2_14_12m_1, d$pd_d2_20_12m_1,
-                              d$pd_d3_9_12m_1, d$pd_d3_14_12m_1, d$pd_d3_20_12m_1,
-                              d$pd_d4_9_12m_1, d$pd_d4_14_12m_1, d$pd_d4_20_12m_1,
-                              d$pd_d5_9_12m_1, d$pd_d5_14_12m_1, d$pd_d5_20_12m_1),
-                   na.rm = TRUE)
-d$pm12[is.nan(d$pm12)] <- NA
-
-
+# Analysis of primary outcome
