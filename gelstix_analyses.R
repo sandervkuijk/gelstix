@@ -6,7 +6,7 @@
 ### in patients with chronic discogenic low back pain 
 ###
 ### Date created: 17/01/2022
-### Date last change: 30/05/2022
+### Date last change: 24/06/2022
 ###
 ### 
 ### sessionInfo()
@@ -32,8 +32,16 @@ rm(list = ls())
 
 ### Read in data
 setwd("/home/sander/Documents/work/research/gelstix/data")
-load("GELSTIX_data_final.Rda")
+load("GELSTIX_data.Rda")
 load("GELSTIX_subset_imp_final.Rda")
+
+sum(is.na(d$plac_gelstix_6m.factor))
+d$crossover_6m_1.factor
+
+table(is.na(d$plac_gelstix_6m.factor), d$redcap_data_access_group)
+table(is.na(d$crossover_6m_1.factor), d$redcap_data_access_group)
+
+View(d[, 1:15])
 
 ### Baseline table
 table(d$plac_gelstix_6m.factor)

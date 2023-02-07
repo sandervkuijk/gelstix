@@ -1,46 +1,12 @@
-################################################################################
-### GELSTIX study, analyses
-### Sander van Kuijk
-###
-### Goal: Read data from .csv file, add labels, add factor levels 
-###
-### Date created: 17/01/2022
-### Date last change: 27/01/2023
-###
-### 
-### sessionInfo()
-### R version 4.1.2 (2021-11-01)
-### Platform: x86_64-w64-mingw32/x64 (64-bit)
-### Running under: Windows 10 x64 (build 19042)
-### 
-### Matrix products: default
-### 
-### locale:
-### [1] LC_COLLATE=English_Netherlands.1252  LC_CTYPE=English_Netherlands.1252   
-### [3] LC_MONETARY=English_Netherlands.1252 LC_NUMERIC=C                        
-### [5] LC_TIME=English_Netherlands.1252    
-### 
-### attached base packages:
-###   [1] stats     graphics  grDevices utils     datasets  methods   base     
-### 
-### loaded via a namespace (and not attached):
-###   [1] compiler_4.1.2 tools_4.1.2
-################################################################################
-
-# Clear existing data and graphics
-rm(list = ls())
-
-# Load Hmisc library
-pckgs <- c("Hmisc")
-new.packages <- pckgs[!(pckgs %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+﻿#Clear existing data and graphics
+rm(list=ls())
+graphics.off()
+#Load Hmisc library
 library(Hmisc)
-
 #Read Data
-setwd("/home/sander/Documents/work/research/gelstix/data")
-data = read.csv("GELSTIXSTUDY_DATA_2023-01-27_1048.csv")
-
+data=read.csv('GELSTIXSTUDY_DATA_2022-07-22_1245.csv')
 #Setting Labels
+
 label(data$record_id)="Record ID"
 label(data$redcap_data_access_group)="Data Access Group"
 label(data$id_patient_1)="ID PATIENT"
@@ -4624,7 +4590,947 @@ label(data$quest_cecit_pz_6m_1)="QUESTIONARY OF THE EFFICACY OF BLINDING   PATIE
 label(data$quest_cecit_med_6m_1)="QUESTIONARY OF THE EFFICACY OF BLINDING   MEDICO"
 label(data$plac_gelstix_6m)="Treatment"
 label(data$months_questionnaires_55b815_complete)="Complete?"
+label(data$months_ca1d31_complete)="Complete?"
+label(data$es_date_12m_1)="DATE OF VERIFICATION EMPLOYMENT STATUS"
+label(data$es_occup_12m_1)="OCCUPATION (if applicable):"
+label(data$es_occuptime_12m_1)="OCCUPATION TIME"
+label(data$es_parttime_12m_1)="If PART TIME as a percentage:"
+label(data$es_legpain_12m_1)="LEG PAIN"
+label(data$es_backpain_12m_1)="BACK PAIN"
+label(data$es_disab_12m_1)="DISABILITY"
+label(data$es_sick_12m_1)="SICK LEAVE"
+label(data$es_other_12m_1)="OTHER PROBLEMS"
+label(data$es_otheryes_12m_1)="OTHER PROBLEMS IF YES, SPECIFY"
+label(data$es_datestopwor_12m_1)="DATE STOPPED WORKING"
+label(data$months_employment_status_3a61ed_complete)="Complete?"
+label(data$pd_notdone_pd_12m_1)="NOT DONE"
+label(data$pd_date_12m_1)="SCREENING PAIN DIARY START DATE"
+label(data$pd_d1_9_12m_1)="HOURS 09.00"
+label(data$pd_d1_14_12m_1)="HOURS 14.00"
+label(data$pd_d1_20_12m_1)="HOURS 20.00"
+label(data$pd_d1_mgacec1_12m_1)="MG"
+label(data$pd_d1_pfacec1_12m_1)="Frequency "
+label(data$pd_d1_mgacec2_12m_1)="MG"
+label(data$pd_d1_pfacec2_12m_1)="Frequency "
+label(data$pd_d1_mgacec3_12m_1)="MG"
+label(data$pd_d1_pfacec3_12m_1)="Frequency "
+label(data$pd_d1_mgacem1_12m_1)="MG"
+label(data$pd_d1_pfacem1_12m_1)="Frequency "
+label(data$pd_d1_mgacem2_12m_1)="MG"
+label(data$pd_d1_pfacem2_12m_1)="Frequency "
+label(data$pd_d1_mgacem3_12m_1)="MG"
+label(data$pd_d1_pfacem3_12m_1)="Frequency "
+label(data$pd_d1_mgami1_12m_1)="MG"
+label(data$pd_d1_pfami1_12m_1)="Frequency "
+label(data$pd_d1_mgami2_12m_1)="MG"
+label(data$pd_d1_pfami2_12m_1)="Frequency "
+label(data$pd_d1_mgami3_12m_1)="MG"
+label(data$pd_d1_pfami3_12m_1)="Frequency "
+label(data$pd_d1_mcg_hbup1_12m_1)="MCG/H"
+label(data$pd_d1_pfbup1_12m_1)="Frequency "
+label(data$pd_d1_mcg_hbup2_12m_1)="MCG/H"
+label(data$pd_d1_pfbup2_12m_1)="Frequency "
+label(data$pd_d1_mcg_hbup3_12m_1)="MCG/H"
+label(data$pd_d1_pfbup3_12m_1)="Frequency "
+label(data$pd_d1_mgdex1_12m_1)="MG"
+label(data$pd_d1_pfdex1_12m_1)="Frequency "
+label(data$pd_d1_mgdex2_12m_1)="MG"
+label(data$pd_d1_pfdex2_12m_1)="Frequency "
+label(data$pd_d1_mgdex3_12m_1)="MG"
+label(data$pd_d1_pfdex3_12m_1)="Frequency "
+label(data$pd_d1_mgdiclo1_12m_1)="MG"
+label(data$pd_d1_pfdiclo1_12m_1)="Frequency "
+label(data$pd_d1_mgdiclo2_12m_1)="MG"
+label(data$pd_d1_pfdiclo2_12m_1)="Frequency "
+label(data$pd_d1_mgdiclo3_12m_1)="MG"
+label(data$pd_d1_pfdiclo3_12m_1)="Frequency "
+label(data$pd_d1_mgdul1_12m_1)="MG"
+label(data$pd_d1_pfdul1_12m_1)="Frequency "
+label(data$pd_d1_mgdul2_12m_1)="MG"
+label(data$pd_d1_pfdul2_12m_1)="Frequency "
+label(data$pd_d1_mgdul3_12m_1)="MG"
+label(data$pd_d1_pfdul3_12m_1)="Frequency "
+label(data$pd_d1_mcg_hfen1_12m_1)="MCG/H"
+label(data$pd_d1_pffen1_12m_1)="Frequency "
+label(data$pd_d1_mcg_hfen2_12m_1)="MCG/H"
+label(data$pd_d1_pffen2_12m_1)="Frequency "
+label(data$pd_d1_mcg_hfen3_12m_1)="MCG/H"
+label(data$pd_d1_pffen3_12m_1)="Frequency "
+label(data$pd_d1_mggab1_12m_1)="MG"
+label(data$pd_d1_pfgab1_12m_1)="Frequency "
+label(data$pd_d1_mggab2_12m_1)="MG"
+label(data$pd_d1_pfgab2_12m_1)="Frequency "
+label(data$pd_d1_mggab3_12m_1)="MG"
+label(data$pd_d1_pfgab3_12m_1)="Frequency "
+label(data$pd_d1_mghyd1_12m_1)="MG"
+label(data$pd_d1_pfhyd1_12m_1)="Frequency "
+label(data$pd_d1_mghyd2_12m_1)="MG"
+label(data$pd_d1_pfhyd2_12m_1)="Frequency "
+label(data$pd_d1_mghyd3_12m_1)="MG"
+label(data$pd_d1_pfhyd3_12m_1)="Frequency "
+label(data$pd_d1_mgibu1_12m_1)="MG"
+label(data$pd_d1_pfibu1_12m_1)="Frequency "
+label(data$pd_d1_mgibu2_12m_1)="MG"
+label(data$pd_d1_pfibu2_12m_1)="Frequency "
+label(data$pd_d1_mgibu3_12m_1)="MG"
+label(data$pd_d1_pfibu3_12m_1)="Frequency "
+label(data$pd_d1_mgind1_12m_1)="MG"
+label(data$pd_d1_pfind1_12m_1)="Frequency "
+label(data$pd_d1_mgind2_12m_1)="MG"
+label(data$pd_d1_pfind2_12m_1)="Frequency "
+label(data$pd_d1_mgind3_12m_1)="MG"
+label(data$pd_d1_pfind3_12m_1)="Frequency "
+label(data$pd_d1_mgket1_12m_1)="MG"
+label(data$pd_d1_pfket1_12m_1)="Frequency "
+label(data$pd_d1_mgket2_12m_1)="MG"
+label(data$pd_d1_pfket2_12m_1)="Frequency "
+label(data$pd_d1_mgket3_12m_1)="MG"
+label(data$pd_d1_pfket3_12m_1)="Frequency "
+label(data$pd_d1_mgmel1_12m_1)="MG"
+label(data$pd_d1_pfmel1_12m_1)="Frequency "
+label(data$pd_d1_mgmel2_12m_1)="MG"
+label(data$pd_d1_pfmel2_12m_1)="Frequency "
+label(data$pd_d1_mgmel3_12m_1)="MG"
+label(data$pd_d1_pfmel3_12m_1)="Frequency "
+label(data$pd_d1_mgmeta1_12m_1)="MG"
+label(data$pd_d1_pfmeta1_12m_1)="Frequency "
+label(data$pd_d1_mgmeta2_12m_1)="MG"
+label(data$pd_d1_pfmeta2_12m_1)="Frequency "
+label(data$pd_d1_mgmeta3_12m_1)="MG"
+label(data$pd_d1_pfmeta3_12m_1)="Frequency "
+label(data$pd_d1_mgmet1_12m_1)="MG"
+label(data$pd_d1_pfmet1_12m_1)="Frequency "
+label(data$pd_d1_mgmet2_12m_1)="MG"
+label(data$pd_d1_pfmet2_12m_1)="Frequency "
+label(data$pd_d1_mgmet3_12m_1)="MG"
+label(data$pd_d1_pfmet3_12m_1)="Frequency "
+label(data$pd_d1_mgmor1_12m_1)="MG"
+label(data$pd_d1_pfmor1_12m_1)="Frequency "
+label(data$pd_d1_mgmor2_12m_1)="MG"
+label(data$pd_d1_pfmor2_12m_1)="Frequency "
+label(data$pd_d1_mgmor3_12m_1)="MG"
+label(data$pd_d1_pfmor3_12m_1)="Frequency "
+label(data$pd_d1_mgnap1_12m_1)="MG"
+label(data$pd_d1_pfnap1_12m_1)="Frequency "
+label(data$pd_d1_mgnap2_12m_1)="MG"
+label(data$pd_d1_pfnap2_12m_1)="Frequency "
+label(data$pd_d1_mgnap3_12m_1)="MG"
+label(data$pd_d1_pfnap3_12m_1)="Frequency "
+label(data$pd_d1_mgnor1_12m_1)="MG"
+label(data$pd_d1_pfnor1_12m_1)="Frequency "
+label(data$pd_d1_mgnor2_12m_1)="MG"
+label(data$pd_d1_pfnor2_12m_1)="Frequency "
+label(data$pd_d1_mgnor3_12m_1)="MG"
+label(data$pd_d1_pfnor3_12m_1)="Frequency "
+label(data$pd_d1_mgoxy1_12m_1)="MG"
+label(data$pd_d1_pfoxy1_12m_1)="Frequency "
+label(data$pd_d1_mgoxy2_12m_1)="MG"
+label(data$pd_d1_pfoxy2_12m_1)="Frequency "
+label(data$pd_d1_mgoxy3_12m_1)="MG"
+label(data$pd_d1_pfoxy3_12m_1)="Frequency "
+label(data$pd_d1_mgparac1_12m_1)="MG"
+label(data$pd_d1_pfparac1_12m_1)="Frequency "
+label(data$pd_d1_mgparac2_12m_1)="MG"
+label(data$pd_d1_pfparac2_12m_1)="Frequency "
+label(data$pd_d1_mgparac3_12m_1)="MG"
+label(data$pd_d1_pfparac3_12m_1)="Frequency "
+label(data$pd_d1_mgphe1_12m_1)="MG"
+label(data$pd_d1_pfphe1_12m_1)="Frequency "
+label(data$pd_d1_mgphe2_12m_1)="MG"
+label(data$pd_d1_pfphe2_12m_1)="Frequency "
+label(data$pd_d1_mgphe3_12m_1)="MG"
+label(data$pd_d1_pfphe3_12m_1)="Frequency "
+label(data$pd_d1_mgpreg1_12m_1)="MG"
+label(data$pd_d1_pfpreg1_12m_1)="Frequency "
+label(data$pd_d1_mgpreg2_12m_1)="MG"
+label(data$pd_d1_pfpreg2_12m_1)="Frequency "
+label(data$pd_d1_mgpreg3_12m_1)="MG"
+label(data$pd_d1_pfpreg3_12m_1)="Frequency "
+label(data$pd_d1_mgpir1_12m_1)="MG"
+label(data$pd_d1_pfpir1_12m_1)="Frequency "
+label(data$pd_d1_mgpir2_12m_1)="MG"
+label(data$pd_d1_pfpir2_12m_1)="Frequency "
+label(data$pd_d1_mgpir3_12m_1)="MG"
+label(data$pd_d1_pfpir3_12m_1)="Frequency "
+label(data$pd_d1_mgtap1_12m_1)="MG"
+label(data$pd_d1_pftap1_12m_1)="Frequency "
+label(data$pd_d1_mgtap2_12m_1)="MG"
+label(data$pd_d1_pftap2_12m_1)="Frequency "
+label(data$pd_d1_mgtap3_12m_1)="MG"
+label(data$pd_d1_pftap3_12m_1)="Frequency "
+label(data$pd_d1_mgtra1_12m_1)="MG"
+label(data$pd_d1_pftra1_12m_1)="Frequency "
+label(data$pd_d1_mgtra2_12m_1)="MG"
+label(data$pd_d1_pftra2_12m_1)="Frequency "
+label(data$pd_d1_mgtra3_12m_1)="MG"
+label(data$pd_d1_pftra3_12m_1)="Frequency "
+label(data$pd_d1_nameoth1_12m_1)="Name"
+label(data$pd_d1_mgoth1_12m_1)="MG"
+label(data$pd_d1_pfoth1_12m_1)="Frequency"
+label(data$pd_d1_nameoth2_12m_1)="Name"
+label(data$pd_d1_mgoth2_12m_1)="MG"
+label(data$pd_d1_pfoth2_12m_1)="Frequency"
+label(data$pd_d1_nameoth3_12m_1)="Name"
+label(data$pd_d1_mgoth3_12m_1)="MG"
+label(data$pd_d1_pfoth3_12m_1)="Frequency"
+label(data$pd_d2_9_12m_1)="HOURS 09.00"
+label(data$pd_d2_14_12m_1)="HOURS 14.00"
+label(data$pd_d2_20_12m_1)="HOURS 20.00"
+label(data$pd_d2_mgacec1_12m_1)="MG"
+label(data$pd_d2_pfacec1_12m_1)="Frequency "
+label(data$pd_d2_mgacec2_12m_1)="MG"
+label(data$pd_d2_pfacec2_12m_1)="Frequency "
+label(data$pd_d2_mgacec3_12m_1)="MG"
+label(data$pd_d2_pfacec3_12m_1)="Frequency "
+label(data$pd_d2_mgacem1_12m_1)="MG"
+label(data$pd_d2_pfacem1_12m_1)="Frequency "
+label(data$pd_d2_mgacem2_12m_1)="MG"
+label(data$pd_d2_pfacem2_12m_1)="Frequency "
+label(data$pd_d2_mgacem3_12m_1)="MG"
+label(data$pd_d2_pfacem3_12m_1)="Frequency "
+label(data$pd_d2_mgami1_12m_1)="MG"
+label(data$pd_d2_pfami1_12m_1)="Frequency "
+label(data$pd_d2_mgami2_12m_1)="MG"
+label(data$pd_d2_pfami2_12m_1)="Frequency "
+label(data$pd_d2_mgami3_12m_1)="MG"
+label(data$pd_d2_pfami3_12m_1)="Frequency "
+label(data$pd_d2_mcg_hbup1_12m_1)="MCG/H"
+label(data$pd_d2_pfbup1_12m_1)="Frequency "
+label(data$pd_d2_mcg_hbup2_12m_1)="MCG/H"
+label(data$pd_d2_pfbup2_12m_1)="Frequency "
+label(data$pd_d2_mcg_hbup3_12m_1)="MCG/H"
+label(data$pd_d2_pfbup3_12m_1)="Frequency "
+label(data$pd_d2_mgdex1_12m_1)="MG"
+label(data$pd_d2_pfdex1_12m_1)="Frequency "
+label(data$pd_d2_mgdex2_12m_1)="MG"
+label(data$pd_d2_pfdex2_12m_1)="Frequency "
+label(data$pd_d2_mgdex3_12m_1)="MG"
+label(data$pd_d2_pfdex3_12m_1)="Frequency "
+label(data$pd_d2_mgdiclo1_12m_1)="MG"
+label(data$pd_d2_pfdiclo1_12m_1)="Frequency "
+label(data$pd_d2_mgdiclo2_12m_1)="MG"
+label(data$pd_d2_pfdiclo2_12m_1)="Frequency "
+label(data$pd_d2_mgdiclo3_12m_1)="MG"
+label(data$pd_d2_pfdiclo3_12m_1)="Frequency "
+label(data$pd_d2_mgdul1_12m_1)="MG"
+label(data$pd_d2_pfdul1_12m_1)="Frequency "
+label(data$pd_d2_mgdul2_12m_1)="MG"
+label(data$pd_d2_pfdul2_12m_1)="Frequency "
+label(data$pd_d2_mgdul3_12m_1)="MG"
+label(data$pd_d2_pfdul3_12m_1)="Frequency "
+label(data$pd_d2_mcg_hfen1_12m_1)="MCG/H"
+label(data$pd_d2_pffen1_12m_1)="Frequency "
+label(data$pd_d2_mcg_hfen2_12m_1)="MCG/H"
+label(data$pd_d2_pffen2_12m_1)="Frequency "
+label(data$pd_d2_mcg_hfen3_12m_1)="MCG/H"
+label(data$pd_d2_pffen3_12m_1)="Frequency "
+label(data$pd_d2_mggab1_12m_1)="MG"
+label(data$pd_d2_pfgab1_12m_1)="Frequency "
+label(data$pd_d2_mggab2_12m_1)="MG"
+label(data$pd_d2_pfgab2_12m_1)="Frequency "
+label(data$pd_d2_mggab3_12m_1)="MG"
+label(data$pd_d2_pfgab3_12m_1)="Frequency "
+label(data$pd_d2_mghyd1_12m_1)="MG"
+label(data$pd_d2_pfhyd1_12m_1)="Frequency "
+label(data$pd_d2_mghyd2_12m_1)="MG"
+label(data$pd_d2_pfhyd2_12m_1)="Frequency "
+label(data$pd_d2_mghyd3_12m_1)="MG"
+label(data$pd_d2_pfhyd3_12m_1)="Frequency "
+label(data$pd_d2_mgibu1_12m_1)="MG"
+label(data$pd_d2_pfibu1_12m_1)="Frequency "
+label(data$pd_d2_mgibu2_12m_1)="MG"
+label(data$pd_d2_pfibu2_12m_1)="Frequency "
+label(data$pd_d2_mgibu3_12m_1)="MG"
+label(data$pd_d2_pfibu3_12m_1)="Frequency "
+label(data$pd_d2_mgind1_12m_1)="MG"
+label(data$pd_d2_pfind1_12m_1)="Frequency "
+label(data$pd_d2_mgind2_12m_1)="MG"
+label(data$pd_d2_pfind2_12m_1)="Frequency "
+label(data$pd_d2_mgind3_12m_1)="MG"
+label(data$pd_d2_pfind3_12m_1)="Frequency "
+label(data$pd_d2_mgket1_12m_1)="MG"
+label(data$pd_d2_pfket1_12m_1)="Frequency "
+label(data$pd_d2_mgket2_12m_1)="MG"
+label(data$pd_d2_pfket2_12m_1)="Frequency "
+label(data$pd_d2_mgket3_12m_1)="MG"
+label(data$pd_d2_pfket3_12m_1)="Frequency "
+label(data$pd_d2_mgmel1_12m_1)="MG"
+label(data$pd_d2_pfmel1_12m_1)="Frequency "
+label(data$pd_d2_mgmel2_12m_1)="MG"
+label(data$pd_d2_pfmel2_12m_1)="Frequency "
+label(data$pd_d2_mgmel3_12m_1)="MG"
+label(data$pd_d2_pfmel3_12m_1)="Frequency "
+label(data$pd_d2_mgmeta1_12m_1)="MG"
+label(data$pd_d2_pfmeta1_12m_1)="Frequency "
+label(data$pd_d2_mgmeta2_12m_1)="MG"
+label(data$pd_d2_pfmeta2_12m_1)="Frequency "
+label(data$pd_d2_mgmeta3_12m_1)="MG"
+label(data$pd_d2_pfmeta3_12m_1)="Frequency "
+label(data$pd_d2_mgmet1_12m_1)="MG"
+label(data$pd_d2_pfmet1_12m_1)="Frequency "
+label(data$pd_d2_mgmet2_12m_1)="MG"
+label(data$pd_d2_pfmet2_12m_1)="Frequency "
+label(data$pd_d2_mgmet3_12m_1)="MG"
+label(data$pd_d2_pfmet3_12m_1)="Frequency "
+label(data$pd_d2_mgmor1_12m_1)="MG"
+label(data$pd_d2_pfmor1_12m_1)="Frequency "
+label(data$pd_d2_mgmor2_12m_1)="MG"
+label(data$pd_d2_pfmor2_12m_1)="Frequency "
+label(data$pd_d2_mgmor3_12m_1)="MG"
+label(data$pd_d2_pfmor3_12m_1)="Frequency "
+label(data$pd_d2_mgnap1_12m_1)="MG"
+label(data$pd_d2_pfnap1_12m_1)="Frequency "
+label(data$pd_d2_mgnap2_12m_1)="MG"
+label(data$pd_d2_pfnap2_12m_1)="Frequency "
+label(data$pd_d2_mgnap3_12m_1)="MG"
+label(data$pd_d2_pfnap3_12m_1)="Frequency "
+label(data$pd_d2_mgnor1_12m_1)="MG"
+label(data$pd_d2_pfnor1_12m_1)="Frequency "
+label(data$pd_d2_mgnor2_12m_1)="MG"
+label(data$pd_d2_pfnor2_12m_1)="Frequency "
+label(data$pd_d2_mgnor3_12m_1)="MG"
+label(data$pd_d2_pfnor3_12m_1)="Frequency "
+label(data$pd_d2_mgoxy1_12m_1)="MG"
+label(data$pd_d2_pfoxy1_12m_1)="Frequency "
+label(data$pd_d2_mgoxy2_12m_1)="MG"
+label(data$pd_d2_pfoxy2_12m_1)="Frequency "
+label(data$pd_d2_mgoxy3_12m_1)="MG"
+label(data$pd_d2_pfoxy3_12m_1)="Frequency "
+label(data$pd_d2_mgparac1_12m_1)="MG"
+label(data$pd_d2_pfparac1_12m_1)="Frequency "
+label(data$pd_d2_mgparac2_12m_1)="MG"
+label(data$pd_d2_pfparac2_12m_1)="Frequency "
+label(data$pd_d2_mgparac3_12m_1)="MG"
+label(data$pd_d2_pfparac3_12m_1)="Frequency "
+label(data$pd_d2_mgphe1_12m_1)="MG"
+label(data$pd_d2_pfphe1_12m_1)="Frequency "
+label(data$pd_d2_mgphe2_12m_1)="MG"
+label(data$pd_d2_pfphe2_12m_1)="Frequency "
+label(data$pd_d2_mgphe3_12m_1)="MG"
+label(data$pd_d2_pfphe3_12m_1)="Frequency "
+label(data$pd_d2_mgpreg1_12m_1)="MG"
+label(data$pd_d2_pfpreg1_12m_1)="Frequency "
+label(data$pd_d2_mgpreg2_12m_1)="MG"
+label(data$pd_d2_pfpreg2_12m_1)="Frequency "
+label(data$pd_d2_mgpreg3_12m_1)="MG"
+label(data$pd_d2_pfpreg3_12m_1)="Frequency "
+label(data$pd_d2_mgpir1_12m_1)="MG"
+label(data$pd_d2_pfpir1_12m_1)="Frequency "
+label(data$pd_d2_mgpir2_12m_1)="MG"
+label(data$pd_d2_pfpir2_12m_1)="Frequency "
+label(data$pd_d2_mgpir3_12m_1)="MG"
+label(data$pd_d2_pfpir3_12m_1)="Frequency "
+label(data$pd_d2_mgtap1_12m_1)="MG"
+label(data$pd_d2_pftap1_12m_1)="Frequency "
+label(data$pd_d2_mgtap2_12m_1)="MG"
+label(data$pd_d2_pftap2_12m_1)="Frequency "
+label(data$pd_d2_mgtap3_12m_1)="MG"
+label(data$pd_d2_pftap3_12m_1)="Frequency "
+label(data$pd_d2_mgtra1_12m_1)="MG"
+label(data$pd_d2_pftra1_12m_1)="Frequency "
+label(data$pd_d2_mgtra2_12m_1)="MG"
+label(data$pd_d2_pftra2_12m_1)="Frequency "
+label(data$pd_d2_mgtra3_12m_1)="MG"
+label(data$pd_d2_pftra3_12m_1)="Frequency "
+label(data$pd_d2_nameoth1_12m_1)="Name"
+label(data$pd_d2_mgoth1_12m_1)="MG"
+label(data$pd_d2_pfoth1_12m_1)="Frequency"
+label(data$pd_d2_nameoth2_12m_1)="Name"
+label(data$pd_d2_mgoth2_12m_1)="MG"
+label(data$pd_d2_pfoth2_12m_1)="Frequency"
+label(data$pd_d2_nameoth3_12m_1)="Name"
+label(data$pd_d2_mgoth3_12m_1)="MG"
+label(data$pd_d2_pfoth3_12m_1)="Frequency"
+label(data$pd_d3_9_12m_1)="HOURS 09.00"
+label(data$pd_d3_14_12m_1)="HOURS 14.00"
+label(data$pd_d3_20_12m_1)="HOURS 20.00"
+label(data$pd_d3_mgacec1_12m_1)="MG"
+label(data$pd_d3_pfacec1_12m_1)="Frequency "
+label(data$pd_d3_mgacec2_12m_1)="MG"
+label(data$pd_d3_pfacec2_12m_1)="Frequency "
+label(data$pd_d3_mgacec3_12m_1)="MG"
+label(data$pd_d3_pfacec3_12m_1)="Frequency "
+label(data$pd_d3_mgacem1_12m_1)="MG"
+label(data$pd_d3_pfacem1_12m_1)="Frequency "
+label(data$pd_d3_mgacem2_12m_1)="MG"
+label(data$pd_d3_pfacem2_12m_1)="Frequency "
+label(data$pd_d3_mgacem3_12m_1)="MG"
+label(data$pd_d3_pfacem3_12m_1)="Frequency "
+label(data$pd_d3_mgami1_12m_1)="MG"
+label(data$pd_d3_pfami1_12m_1)="Frequency "
+label(data$pd_d3_mgami2_12m_1)="MG"
+label(data$pd_d3_pfami2_12m_1)="Frequency "
+label(data$pd_d3_mgami3_12m_1)="MG"
+label(data$pd_d3_pfami3_12m_1)="Frequency "
+label(data$pd_d3_mcg_hbup1_12m_1)="MCG/H"
+label(data$pd_d3_pfbup1_12m_1)="Frequency "
+label(data$pd_d3_mcg_hbup2_12m_1)="MCG/H"
+label(data$pd_d3_pfbup2_12m_1)="Frequency "
+label(data$pd_d3_mcg_hbup3_12m_1)="MCG/H"
+label(data$pd_d3_pfbup3_12m_1)="Frequency "
+label(data$pd_d3_mgdex1_12m_1)="MG"
+label(data$pd_d3_pfdex1_12m_1)="Frequency "
+label(data$pd_d3_mgdex2_12m_1)="MG"
+label(data$pd_d3_pfdex2_12m_1)="Frequency "
+label(data$pd_d3_mgdex3_12m_1)="MG"
+label(data$pd_d3_pfdex3_12m_1)="Frequency "
+label(data$pd_d3_mgdiclo1_12m_1)="MG"
+label(data$pd_d3_pfdiclo1_12m_1)="Frequency "
+label(data$pd_d3_mgdiclo2_12m_1)="MG"
+label(data$pd_d3_pfdiclo2_12m_1)="Frequency "
+label(data$pd_d3_mgdiclo3_12m_1)="MG"
+label(data$pd_d3_pfdiclo3_12m_1)="Frequency "
+label(data$pd_d3_mgdul1_12m_1)="MG"
+label(data$pd_d3_pfdul1_12m_1)="Frequency "
+label(data$pd_d3_mgdul2_12m_1)="MG"
+label(data$pd_d3_pfdul2_12m_1)="Frequency "
+label(data$pd_d3_mgdul3_12m_1)="MG"
+label(data$pd_d3_pfdul3_12m_1)="Frequency "
+label(data$pd_d3_mcg_hfen1_12m_1)="MCG/H"
+label(data$pd_d3_pffen1_12m_1)="Frequency "
+label(data$pd_d3_mcg_hfen2_12m_1)="MCG/H"
+label(data$pd_d3_pffen2_12m_1)="Frequency "
+label(data$pd_d3_mcg_hfen3_12m_1)="MCG/H"
+label(data$pd_d3_pffen3_12m_1)="Frequency "
+label(data$pd_d3_mggab1_12m_1)="MG"
+label(data$pd_d3_pfgab1_12m_1)="Frequency "
+label(data$pd_d3_mggab2_12m_1)="MG"
+label(data$pd_d3_pfgab2_12m_1)="Frequency "
+label(data$pd_d3_mggab3_12m_1)="MG"
+label(data$pd_d3_pfgab3_12m_1)="Frequency "
+label(data$pd_d3_mghyd1_12m_1)="MG"
+label(data$pd_d3_pfhyd1_12m_1)="Frequency "
+label(data$pd_d3_mghyd2_12m_1)="MG"
+label(data$pd_d3_pfhyd2_12m_1)="Frequency "
+label(data$pd_d3_mghyd3_12m_1)="MG"
+label(data$pd_d3_pfhyd3_12m_1)="Frequency "
+label(data$pd_d3_mgibu1_12m_1)="MG"
+label(data$pd_d3_pfibu1_12m_1)="Frequency "
+label(data$pd_d3_mgibu2_12m_1)="MG"
+label(data$pd_d3_pfibu2_12m_1)="Frequency "
+label(data$pd_d3_mgibu3_12m_1)="MG"
+label(data$pd_d3_pfibu3_12m_1)="Frequency "
+label(data$pd_d3_mgind1_12m_1)="MG"
+label(data$pd_d3_pfind1_12m_1)="Frequency "
+label(data$pd_d3_mgind2_12m_1)="MG"
+label(data$pd_d3_pfind2_12m_1)="Frequency "
+label(data$pd_d3_mgind3_12m_1)="MG"
+label(data$pd_d3_pfind3_12m_1)="Frequency "
+label(data$pd_d3_mgket1_12m_1)="MG"
+label(data$pd_d3_pfket1_12m_1)="Frequency "
+label(data$pd_d3_mgket2_12m_1)="MG"
+label(data$pd_d3_pfket2_12m_1)="Frequency "
+label(data$pd_d3_mgket3_12m_1)="MG"
+label(data$pd_d3_pfket3_12m_1)="Frequency "
+label(data$pd_d3_mgmel1_12m_1)="MG"
+label(data$pd_d3_pfmel1_12m_1)="Frequency "
+label(data$pd_d3_mgmel2_12m_1)="MG"
+label(data$pd_d3_pfmel2_12m_1)="Frequency "
+label(data$pd_d3_mgmel3_12m_1)="MG"
+label(data$pd_d3_pfmel3_12m_1)="Frequency "
+label(data$pd_d3_mgmeta1_12m_1)="MG"
+label(data$pd_d3_pfmeta1_12m_1)="Frequency "
+label(data$pd_d3_mgmeta2_12m_1)="MG"
+label(data$pd_d3_pfmeta2_12m_1)="Frequency "
+label(data$pd_d3_mgmeta3_12m_1)="MG"
+label(data$pd_d3_pfmeta3_12m_1)="Frequency "
+label(data$pd_d3_mgmet1_12m_1)="MG"
+label(data$pd_d3_pfmet1_12m_1)="Frequency "
+label(data$pd_d3_mgmet2_12m_1)="MG"
+label(data$pd_d3_pfmet2_12m_1)="Frequency "
+label(data$pd_d3_mgmet3_12m_1)="MG"
+label(data$pd_d3_pfmet3_12m_1)="Frequency "
+label(data$pd_d3_mgmor1_12m_1)="MG"
+label(data$pd_d3_pfmor1_12m_1)="Frequency "
+label(data$pd_d3_mgmor2_12m_1)="MG"
+label(data$pd_d3_pfmor2_12m_1)="Frequency "
+label(data$pd_d3_mgmor3_12m_1)="MG"
+label(data$pd_d3_pfmor3_12m_1)="Frequency "
+label(data$pd_d3_mgnap1_12m_1)="MG"
+label(data$pd_d3_pfnap1_12m_1)="Frequency "
+label(data$pd_d3_mgnap2_12m_1)="MG"
+label(data$pd_d3_pfnap2_12m_1)="Frequency "
+label(data$pd_d3_mgnap3_12m_1)="MG"
+label(data$pd_d3_pfnap3_12m_1)="Frequency "
+label(data$pd_d3_mgnor1_12m_1)="MG"
+label(data$pd_d3_pfnor1_12m_1)="Frequency "
+label(data$pd_d3_mgnor2_12m_1)="MG"
+label(data$pd_d3_pfnor2_12m_1)="Frequency "
+label(data$pd_d3_mgnor3_12m_1)="MG"
+label(data$pd_d3_pfnor3_12m_1)="Frequency "
+label(data$pd_d3_mgoxy1_12m_1)="MG"
+label(data$pd_d3_pfoxy1_12m_1)="Frequency "
+label(data$pd_d3_mgoxy2_12m_1)="MG"
+label(data$pd_d3_pfoxy2_12m_1)="Frequency "
+label(data$pd_d3_mgoxy3_12m_1)="MG"
+label(data$pd_d3_pfoxy3_12m_1)="Frequency "
+label(data$pd_d3_mgparac1_12m_1)="MG"
+label(data$pd_d3_pfparac1_12m_1)="Frequency "
+label(data$pd_d3_mgparac2_12m_1)="MG"
+label(data$pd_d3_pfparac2_12m_1)="Frequency "
+label(data$pd_d3_mgparac3_12m_1)="MG"
+label(data$pd_d3_pfparac3_12m_1)="Frequency "
+label(data$pd_d3_mgphe1_12m_1)="MG"
+label(data$pd_d3_pfphe1_12m_1)="Frequency "
+label(data$pd_d3_mgphe2_12m_1)="MG"
+label(data$pd_d3_pfphe2_12m_1)="Frequency "
+label(data$pd_d3_mgphe3_12m_1)="MG"
+label(data$pd_d3_pfphe3_12m_1)="Frequency "
+label(data$pd_d3_mgpreg1_12m_1)="MG"
+label(data$pd_d3_pfpreg1_12m_1)="Frequency "
+label(data$pd_d3_mgpreg2_12m_1)="MG"
+label(data$pd_d3_pfpreg2_12m_1)="Frequency "
+label(data$pd_d3_mgpreg3_12m_1)="MG"
+label(data$pd_d3_pfpreg3_12m_1)="Frequency "
+label(data$pd_d3_mgpir1_12m_1)="MG"
+label(data$pd_d3_pfpir1_12m_1)="Frequency "
+label(data$pd_d3_mgpir2_12m_1)="MG"
+label(data$pd_d3_pfpir2_12m_1)="Frequency "
+label(data$pd_d3_mgpir3_12m_1)="MG"
+label(data$pd_d3_pfpir3_12m_1)="Frequency "
+label(data$pd_d3_mgtap1_12m_1)="MG"
+label(data$pd_d3_pftap1_12m_1)="Frequency "
+label(data$pd_d3_mgtap2_12m_1)="MG"
+label(data$pd_d3_pftap2_12m_1)="Frequency "
+label(data$pd_d3_mgtap3_12m_1)="MG"
+label(data$pd_d3_pftap3_12m_1)="Frequency "
+label(data$pd_d3_mgtra1_12m_1)="MG"
+label(data$pd_d3_pftra1_12m_1)="Frequency "
+label(data$pd_d3_mgtra2_12m_1)="MG"
+label(data$pd_d3_pftra2_12m_1)="Frequency "
+label(data$pd_d3_mgtra3_12m_1)="MG"
+label(data$pd_d3_pftra3_12m_1)="Frequency "
+label(data$pd_d3_nameoth1_12m_1)="Name"
+label(data$pd_d3_mgoth1_12m_1)="MG"
+label(data$pd_d3_pfoth1_12m_1)="Frequency"
+label(data$pd_d3_nameoth2_12m_1)="Name"
+label(data$pd_d3_mgoth2_12m_1)="MG"
+label(data$pd_d3_pfoth2_12m_1)="Frequency"
+label(data$pd_d3_nameoth3_12m_1)="Name"
+label(data$pd_d3_mgoth3_12m_1)="MG"
+label(data$pd_d3_pfoth3_12m_1)="Frequency"
+label(data$pd_d4_9_12m_1)="HOURS 09.00"
+label(data$pd_d4_14_12m_1)="HOURS 14.00"
+label(data$pd_d4_20_12m_1)="HOURS 20.00"
+label(data$pd_d4_mgacec1_12m_1)="MG"
+label(data$pd_d4_pfacec1_12m_1)="Frequency "
+label(data$pd_d4_mgacec2_12m_1)="MG"
+label(data$pd_d4_pfacec2_12m_1)="Frequency "
+label(data$pd_d4_mgacec3_12m_1)="MG"
+label(data$pd_d4_pfacec3_12m_1)="Frequency "
+label(data$pd_d4_mgacem1_12m_1)="MG"
+label(data$pd_d4_pfacem1_12m_1)="Frequency "
+label(data$pd_d4_mgacem2_12m_1)="MG"
+label(data$pd_d4_pfacem2_12m_1)="Frequency "
+label(data$pd_d4_mgacem3_12m_1)="MG"
+label(data$pd_d4_pfacem3_12m_1)="Frequency "
+label(data$pd_d4_mgami1_12m_1)="MG"
+label(data$pd_d4_pfami1_12m_1)="Frequency "
+label(data$pd_d4_mgami2_12m_1)="MG"
+label(data$pd_d4_pfami2_12m_1)="Frequency "
+label(data$pd_d4_mgami3_12m_1)="MG"
+label(data$pd_d4_pfami3_12m_1)="Frequency "
+label(data$pd_d4_mcg_hbup1_12m_1)="MCG/H"
+label(data$pd_d4_pfbup1_12m_1)="Frequency "
+label(data$pd_d4_mcg_hbup2_12m_1)="MCG/H"
+label(data$pd_d4_pfbup2_12m_1)="Frequency "
+label(data$pd_d4_mcg_hbup3_12m_1)="MCG/H"
+label(data$pd_d4_pfbup3_12m_1)="Frequency "
+label(data$pd_d4_mgdex1_12m_1)="MG"
+label(data$pd_d4_pfdex1_12m_1)="Frequency "
+label(data$pd_d4_mgdex2_12m_1)="MG"
+label(data$pd_d4_pfdex2_12m_1)="Frequency "
+label(data$pd_d4_mgdex3_12m_1)="MG"
+label(data$pd_d4_pfdex3_12m_1)="Frequency "
+label(data$pd_d4_mgdiclo1_12m_1)="MG"
+label(data$pd_d4_pfdiclo1_12m_1)="Frequency "
+label(data$pd_d4_mgdiclo2_12m_1)="MG"
+label(data$pd_d4_pfdiclo2_12m_1)="Frequency "
+label(data$pd_d4_mgdiclo3_12m_1)="MG"
+label(data$pd_d4_pfdiclo3_12m_1)="Frequency "
+label(data$pd_d4_mgdul1_12m_1)="MG"
+label(data$pd_d4_pfdul1_12m_1)="Frequency "
+label(data$pd_d4_mgdul2_12m_1)="MG"
+label(data$pd_d4_pfdul2_12m_1)="Frequency "
+label(data$pd_d4_mgdul3_12m_1)="MG"
+label(data$pd_d4_pfdul3_12m_1)="Frequency "
+label(data$pd_d4_mcg_hfen1_12m_1)="MCG/H"
+label(data$pd_d4_pffen1_12m_1)="Frequency "
+label(data$pd_d4_mcg_hfen2_12m_1)="MCG/H"
+label(data$pd_d4_pffen2_12m_1)="Frequency "
+label(data$pd_d4_mcg_hfen3_12m_1)="MCG/H"
+label(data$pd_d4_pffen3_12m_1)="Frequency "
+label(data$pd_d4_mggab1_12m_1)="MG"
+label(data$pd_d4_pfgab1_12m_1)="Frequency "
+label(data$pd_d4_mggab2_12m_1)="MG"
+label(data$pd_d4_pfgab2_12m_1)="Frequency "
+label(data$pd_d4_mggab3_12m_1)="MG"
+label(data$pd_d4_pfgab3_12m_1)="Frequency "
+label(data$pd_d4_mghyd1_12m_1)="MG"
+label(data$pd_d4_pfhyd1_12m_1)="Frequency "
+label(data$pd_d4_mghyd2_12m_1)="MG"
+label(data$pd_d4_pfhyd2_12m_1)="Frequency "
+label(data$pd_d4_mghyd3_12m_1)="MG"
+label(data$pd_d4_pfhyd3_12m_1)="Frequency "
+label(data$pd_d4_mgibu1_12m_1)="MG"
+label(data$pd_d4_pfibu1_12m_1)="Frequency "
+label(data$pd_d4_mgibu2_12m_1)="MG"
+label(data$pd_d4_pfibu2_12m_1)="Frequency "
+label(data$pd_d4_mgibu3_12m_1)="MG"
+label(data$pd_d4_pfibu3_12m_1)="Frequency "
+label(data$pd_d4_mgind1_12m_1)="MG"
+label(data$pd_d4_pfind1_12m_1)="Frequency "
+label(data$pd_d4_mgind2_12m_1)="MG"
+label(data$pd_d4_pfind2_12m_1)="Frequency "
+label(data$pd_d4_mgind3_12m_1)="MG"
+label(data$pd_d4_pfind3_12m_1)="Frequency "
+label(data$pd_d4_mgket1_12m_1)="MG"
+label(data$pd_d4_pfket1_12m_1)="Frequency "
+label(data$pd_d4_mgket2_12m_1)="MG"
+label(data$pd_d4_pfket2_12m_1)="Frequency "
+label(data$pd_d4_mgket3_12m_1)="MG"
+label(data$pd_d4_pfket3_12m_1)="Frequency "
+label(data$pd_d4_mgmel1_12m_1)="MG"
+label(data$pd_d4_pfmel1_12m_1)="Frequency "
+label(data$pd_d4_mgmel2_12m_1)="MG"
+label(data$pd_d4_pfmel2_12m_1)="Frequency "
+label(data$pd_d4_mgmel3_12m_1)="MG"
+label(data$pd_d4_pfmel3_12m_1)="Frequency "
+label(data$pd_d4_mgmeta1_12m_1)="MG"
+label(data$pd_d4_pfmeta1_12m_1)="Frequency "
+label(data$pd_d4_mgmeta2_12m_1)="MG"
+label(data$pd_d4_pfmeta2_12m_1)="Frequency "
+label(data$pd_d4_mgmeta3_12m_1)="MG"
+label(data$pd_d4_pfmeta3_12m_1)="Frequency "
+label(data$pd_d4_mgmet1_12m_1)="MG"
+label(data$pd_d4_pfmet1_12m_1)="Frequency "
+label(data$pd_d4_mgmet2_12m_1)="MG"
+label(data$pd_d4_pfmet2_12m_1)="Frequency "
+label(data$pd_d4_mgmet3_12m_1)="MG"
+label(data$pd_d4_pfmet3_12m_1)="Frequency "
+label(data$pd_d4_mgmor1_12m_1)="MG"
+label(data$pd_d4_pfmor1_12m_1)="Frequency "
+label(data$pd_d4_mgmor2_12m_1)="MG"
+label(data$pd_d4_pfmor2_12m_1)="Frequency "
+label(data$pd_d4_mgmor3_12m_1)="MG"
+label(data$pd_d4_pfmor3_12m_1)="Frequency "
+label(data$pd_d4_mgnap1_12m_1)="MG"
+label(data$pd_d4_pfnap1_12m_1)="Frequency "
+label(data$pd_d4_mgnap2_12m_1)="MG"
+label(data$pd_d4_pfnap2_12m_1)="Frequency "
+label(data$pd_d4_mgnap3_12m_1)="MG"
+label(data$pd_d4_pfnap3_12m_1)="Frequency "
+label(data$pd_d4_mgnor1_12m_1)="MG"
+label(data$pd_d4_pfnor1_12m_1)="Frequency "
+label(data$pd_d4_mgnor2_12m_1)="MG"
+label(data$pd_d4_pfnor2_12m_1)="Frequency "
+label(data$pd_d4_mgnor3_12m_1)="MG"
+label(data$pd_d4_pfnor3_12m_1)="Frequency "
+label(data$pd_d4_mgoxy1_12m_1)="MG"
+label(data$pd_d4_pfoxy1_12m_1)="Frequency "
+label(data$pd_d4_mgoxy2_12m_1)="MG"
+label(data$pd_d4_pfoxy2_12m_1)="Frequency "
+label(data$pd_d4_mgoxy3_12m_1)="MG"
+label(data$pd_d4_pfoxy3_12m_1)="Frequency "
+label(data$pd_d4_mgparac1_12m_1)="MG"
+label(data$pd_d4_pfparac1_12m_1)="Frequency "
+label(data$pd_d4_mgparac2_12m_1)="MG"
+label(data$pd_d4_pfparac2_12m_1)="Frequency "
+label(data$pd_d4_mgparac3_12m_1)="MG"
+label(data$pd_d4_pfparac3_12m_1)="Frequency "
+label(data$pd_d4_mgphe1_12m_1)="MG"
+label(data$pd_d4_pfphe1_12m_1)="Frequency "
+label(data$pd_d4_mgphe2_12m_1)="MG"
+label(data$pd_d4_pfphe2_12m_1)="Frequency "
+label(data$pd_d4_mgphe3_12m_1)="MG"
+label(data$pd_d4_pfphe3_12m_1)="Frequency "
+label(data$pd_d4_mgpreg1_12m_1)="MG"
+label(data$pd_d4_pfpreg1_12m_1)="Frequency "
+label(data$pd_d4_mgpreg2_12m_1)="MG"
+label(data$pd_d4_pfpreg2_12m_1)="Frequency "
+label(data$pd_d4_mgpreg3_12m_1)="MG"
+label(data$pd_d4_pfpreg3_12m_1)="Frequency "
+label(data$pd_d4_mgpir1_12m_1)="MG"
+label(data$pd_d4_pfpir1_12m_1)="Frequency "
+label(data$pd_d4_mgpir2_12m_1)="MG"
+label(data$pd_d4_pfpir2_12m_1)="Frequency "
+label(data$pd_d4_mgpir3_12m_1)="MG"
+label(data$pd_d4_pfpir3_12m_1)="Frequency "
+label(data$pd_d4_mgtap1_12m_1)="MG"
+label(data$pd_d4_pftap1_12m_1)="Frequency "
+label(data$pd_d4_mgtap2_12m_1)="MG"
+label(data$pd_d4_pftap2_12m_1)="Frequency "
+label(data$pd_d4_mgtap3_12m_1)="MG"
+label(data$pd_d4_pftap3_12m_1)="Frequency "
+label(data$pd_d4_mgtra1_12m_1)="MG"
+label(data$pd_d4_pftra1_12m_1)="Frequency "
+label(data$pd_d4_mgtra2_12m_1)="MG"
+label(data$pd_d4_pftra2_12m_1)="Frequency "
+label(data$pd_d4_mgtra3_12m_1)="MG"
+label(data$pd_d4_pftra3_12m_1)="Frequency "
+label(data$pd_d4_nameoth1_12m_1)="Name"
+label(data$pd_d4_mgoth1_12m_1)="MG"
+label(data$pd_d4_pfoth1_12m_1)="Frequency"
+label(data$pd_d4_nameoth2_12m_1)="Name"
+label(data$pd_d4_mgoth2_12m_1)="MG"
+label(data$pd_d4_pfoth2_12m_1)="Frequency"
+label(data$pd_d4_nameoth3_12m_1)="Name"
+label(data$pd_d4_mgoth3_12m_1)="MG"
+label(data$pd_d4_pfoth3_12m_1)="Frequency"
+label(data$pd_d5_9_12m_1)="HOURS 09.00"
+label(data$pd_d5_14_12m_1)="HOURS 14.00"
+label(data$pd_d5_20_12m_1)="HOURS 20.00"
+label(data$pd_d5_mgacec1_12m_1)="MG"
+label(data$pd_d5_pfacec1_12m_1)="Frequency "
+label(data$pd_d5_mgacec2_12m_1)="MG"
+label(data$pd_d5_pfacec2_12m_1)="Frequency "
+label(data$pd_d5_mgacec3_12m_1)="MG"
+label(data$pd_d5_pfacec3_12m_1)="Frequency "
+label(data$pd_d5_mgacem1_12m_1)="MG"
+label(data$pd_d5_pfacem1_12m_1)="Frequency "
+label(data$pd_d5_mgacem2_12m_1)="MG"
+label(data$pd_d5_pfacem2_12m_1)="Frequency "
+label(data$pd_d5_mgacem3_12m_1)="MG"
+label(data$pd_d5_pfacem3_12m_1)="Frequency "
+label(data$pd_d5_mgami1_12m_1)="MG"
+label(data$pd_d5_pfami1_12m_1)="Frequency "
+label(data$pd_d5_mgami2_12m_1)="MG"
+label(data$pd_d5_pfami2_12m_1)="Frequency "
+label(data$pd_d5_mgami3_12m_1)="MG"
+label(data$pd_d5_pfami3_12m_1)="Frequency "
+label(data$pd_d5_mcg_hbup1_12m_1)="MCG/H"
+label(data$pd_d5_pfbup1_12m_1)="Frequency "
+label(data$pd_d5_mcg_hbup2_12m_1)="MCG/H"
+label(data$pd_d5_pfbup2_12m_1)="Frequency "
+label(data$pd_d5_mcg_hbup3_12m_1)="MCG/H"
+label(data$pd_d5_pfbup3_12m_1)="Frequency "
+label(data$pd_d5_mgdex1_12m_1)="MG"
+label(data$pd_d5_pfdex1_12m_1)="Frequency "
+label(data$pd_d5_mgdex2_12m_1)="MG"
+label(data$pd_d5_pfdex2_12m_1)="Frequency "
+label(data$pd_d5_mgdex3_12m_1)="MG"
+label(data$pd_d5_pfdex3_12m_1)="Frequency "
+label(data$pd_d5_mgdiclo1_12m_1)="MG"
+label(data$pd_d5_pfdiclo1_12m_1)="Frequency "
+label(data$pd_d5_mgdiclo2_12m_1)="MG"
+label(data$pd_d5_pfdiclo2_12m_1)="Frequency "
+label(data$pd_d5_mgdiclo3_12m_1)="MG"
+label(data$pd_d5_pfdiclo3_12m_1)="Frequency "
+label(data$pd_d5_mgdul1_12m_1)="MG"
+label(data$pd_d5_pfdul1_12m_1)="Frequency "
+label(data$pd_d5_mgdul2_12m_1)="MG"
+label(data$pd_d5_pfdul2_12m_1)="Frequency "
+label(data$pd_d5_mgdul3_12m_1)="MG"
+label(data$pd_d5_pfdul3_12m_1)="Frequency "
+label(data$pd_d5_mcg_hfen1_12m_1)="MCG/H"
+label(data$pd_d5_pffen1_12m_1)="Frequency "
+label(data$pd_d5_mcg_hfen2_12m_1)="MCG/H"
+label(data$pd_d5_pffen2_12m_1)="Frequency "
+label(data$pd_d5_mcg_hfen3_12m_1)="MCG/H"
+label(data$pd_d5_pffen3_12m_1)="Frequency "
+label(data$pd_d5_mggab1_12m_1)="MG"
+label(data$pd_d5_pfgab1_12m_1)="Frequency "
+label(data$pd_d5_mggab2_12m_1)="MG"
+label(data$pd_d5_pfgab2_12m_1)="Frequency "
+label(data$pd_d5_mggab3_12m_1)="MG"
+label(data$pd_d5_pfgab3_12m_1)="Frequency "
+label(data$pd_d5_mghyd1_12m_1)="MG"
+label(data$pd_d5_pfhyd1_12m_1)="Frequency "
+label(data$pd_d5_mghyd2_12m_1)="MG"
+label(data$pd_d5_pfhyd2_12m_1)="Frequency "
+label(data$pd_d5_mghyd3_12m_1)="MG"
+label(data$pd_d5_pfhyd3_12m_1)="Frequency "
+label(data$pd_d5_mgibu1_12m_1)="MG"
+label(data$pd_d5_pfibu1_12m_1)="Frequency "
+label(data$pd_d5_mgibu2_12m_1)="MG"
+label(data$pd_d5_pfibu2_12m_1)="Frequency "
+label(data$pd_d5_mgibu3_12m_1)="MG"
+label(data$pd_d5_pfibu3_12m_1)="Frequency "
+label(data$pd_d5_mgind1_12m_1)="MG"
+label(data$pd_d5_pfind1_12m_1)="Frequency "
+label(data$pd_d5_mgind2_12m_1)="MG"
+label(data$pd_d5_pfind2_12m_1)="Frequency "
+label(data$pd_d5_mgind3_12m_1)="MG"
+label(data$pd_d5_pfind3_12m_1)="Frequency "
+label(data$pd_d5_mgket1_12m_1)="MG"
+label(data$pd_d5_pfket1_12m_1)="Frequency "
+label(data$pd_d5_mgket2_12m_1)="MG"
+label(data$pd_d5_pfket2_12m_1)="Frequency "
+label(data$pd_d5_mgket3_12m_1)="MG"
+label(data$pd_d5_pfket3_12m_1)="Frequency "
+label(data$pd_d5_mgmel1_12m_1)="MG"
+label(data$pd_d5_pfmel1_12m_1)="Frequency "
+label(data$pd_d5_mgmel2_12m_1)="MG"
+label(data$pd_d5_pfmel2_12m_1)="Frequency "
+label(data$pd_d5_mgmel3_12m_1)="MG"
+label(data$pd_d5_pfmel3_12m_1)="Frequency "
+label(data$pd_d5_mgmeta1_12m_1)="MG"
+label(data$pd_d5_pfmeta1_12m_1)="Frequency "
+label(data$pd_d5_mgmeta2_12m_1)="MG"
+label(data$pd_d5_pfmeta2_12m_1)="Frequency "
+label(data$pd_d5_mgmeta3_12m_1)="MG"
+label(data$pd_d5_pfmeta3_12m_1)="Frequency "
+label(data$pd_d5_mgmet1_12m_1)="MG"
+label(data$pd_d5_pfmet1_12m_1)="Frequency "
+label(data$pd_d5_mgmet2_12m_1)="MG"
+label(data$pd_d5_pfmet2_12m_1)="Frequency "
+label(data$pd_d5_mgmet3_12m_1)="MG"
+label(data$pd_d5_pfmet3_12m_1)="Frequency "
+label(data$pd_d5_mgmor1_12m_1)="MG"
+label(data$pd_d5_pfmor1_12m_1)="Frequency "
+label(data$pd_d5_mgmor2_12m_1)="MG"
+label(data$pd_d5_pfmor2_12m_1)="Frequency "
+label(data$pd_d5_mgmor3_12m_1)="MG"
+label(data$pd_d5_pfmor3_12m_1)="Frequency "
+label(data$pd_d5_mgnap1_12m_1)="MG"
+label(data$pd_d5_pfnap1_12m_1)="Frequency "
+label(data$pd_d5_mgnap2_12m_1)="MG"
+label(data$pd_d5_pfnap2_12m_1)="Frequency "
+label(data$pd_d5_mgnap3_12m_1)="MG"
+label(data$pd_d5_pfnap3_12m_1)="Frequency "
+label(data$pd_d5_mgnor1_12m_1)="MG"
+label(data$pd_d5_pfnor1_12m_1)="Frequency "
+label(data$pd_d5_mgnor2_12m_1)="MG"
+label(data$pd_d5_pfnor2_12m_1)="Frequency "
+label(data$pd_d5_mgnor3_12m_1)="MG"
+label(data$pd_d5_pfnor3_12m_1)="Frequency "
+label(data$pd_d5_mgoxy1_12m_1)="MG"
+label(data$pd_d5_pfoxy1_12m_1)="Frequency "
+label(data$pd_d5_mgoxy2_12m_1)="MG"
+label(data$pd_d5_pfoxy2_12m_1)="Frequency "
+label(data$pd_d5_mgoxy3_12m_1)="MG"
+label(data$pd_d5_pfoxy3_12m_1)="Frequency "
+label(data$pd_d5_mgparac1_12m_1)="MG"
+label(data$pd_d5_pfparac1_12m_1)="Frequency "
+label(data$pd_d5_mgparac2_12m_1)="MG"
+label(data$pd_d5_pfparac2_12m_1)="Frequency "
+label(data$pd_d5_mgparac3_12m_1)="MG"
+label(data$pd_d5_pfparac3_12m_1)="Frequency "
+label(data$pd_d5_mgphe1_12m_1)="MG"
+label(data$pd_d5_pfphe1_12m_1)="Frequency "
+label(data$pd_d5_mgphe2_12m_1)="MG"
+label(data$pd_d5_pfphe2_12m_1)="Frequency "
+label(data$pd_d5_mgphe3_12m_1)="MG"
+label(data$pd_d5_pfphe3_12m_1)="Frequency "
+label(data$pd_d5_mgpreg1_12m_1)="MG"
+label(data$pd_d5_pfpreg1_12m_1)="Frequency "
+label(data$pd_d5_mgpreg2_12m_1)="MG"
+label(data$pd_d5_pfpreg2_12m_1)="Frequency "
+label(data$pd_d5_mgpreg3_12m_1)="MG"
+label(data$pd_d5_pfpreg3_12m_1)="Frequency "
+label(data$pd_d5_mgpir1_12m_1)="MG"
+label(data$pd_d5_pfpir1_12m_1)="Frequency "
+label(data$pd_d5_mgpir2_12m_1)="MG"
+label(data$pd_d5_pfpir2_12m_1)="Frequency "
+label(data$pd_d5_mgpir3_12m_1)="MG"
+label(data$pd_d5_pfpir3_12m_1)="Frequency "
+label(data$pd_d5_mgtap1_12m_1)="MG"
+label(data$pd_d5_pftap1_12m_1)="Frequency "
+label(data$pd_d5_mgtap2_12m_1)="MG"
+label(data$pd_d5_pftap2_12m_1)="Frequency "
+label(data$pd_d5_mgtap3_12m_1)="MG"
+label(data$pd_d5_pftap3_12m_1)="Frequency "
+label(data$pd_d5_mgtra1_12m_1)="MG"
+label(data$pd_d5_pftra1_12m_1)="Frequency "
+label(data$pd_d5_mgtra2_12m_1)="MG"
+label(data$pd_d5_pftra2_12m_1)="Frequency "
+label(data$pd_d5_mgtra3_12m_1)="MG"
+label(data$pd_d5_pftra3_12m_1)="Frequency "
+label(data$pd_d5_nameoth1_12m_1)="Name"
+label(data$pd_d5_mgoth1_12m_1)="MG"
+label(data$pd_d5_pfoth1_12m_1)="Frequency"
+label(data$pd_d5_nameoth2_12m_1)="Name"
+label(data$pd_d5_mgoth2_12m_1)="MG"
+label(data$pd_d5_pfoth2_12m_1)="Frequency"
+label(data$pd_d5_nameoth3_12m_1)="Name"
+label(data$pd_d5_mgoth3_12m_1)="MG"
+label(data$pd_d5_pfoth3_12m_1)="Frequency"
+label(data$months_follow_up_pain_diary_15e6_complete)="Complete?"
+label(data$gelstix_12m_advev1_1)="ADVERSE EVENTS"
+label(data$gelstix_12m_advev1_starh_1)="START TIME"
+label(data$gelstix_12m_advev1_stop_1)="STOP TIME"
+label(data$gelstix_12m_advevdesc1_1)="ADVERSE EVENT"
+label(data$gelstix_12m_advev1_inten_1)="MAXIMUM INTENSITY"
+label(data$gelstix_12m_advev1_actio_1)="ACTION TAKEN"
+label(data$gelstix_12m_advev1_relat_1)="RELATIONSHIP TO INVESTIGATIONAL PRODUCT"
+label(data$gelstix_12m_advev1_outc_1)="SUBJECT OUTCOME"
+label(data$gelstix_12m_advev1_sae_1)="SAE"
+label(data$gelstix_12m_advev2_starth_1)="START TIME"
+label(data$gelstix_12m_advev2_stop_1)="STOP TIME"
+label(data$gelstix_12m_advevdesc2_1)="ADVERSE EVENT"
+label(data$gelstix_12m_advev2_inten_1)="MAXIMUM INTENSITY"
+label(data$gelstix_12m_advev2_actio_1)="ACTION TAKEN"
+label(data$gelstix_12m_advev2_relat_1)="RELATIONSHIP TO INVESTIGATIONAL PRODUCT"
+label(data$gelstix_12m_advev2_outc_1)="SUBJECT OUTCOME"
+label(data$gelstix_12m_advev2_sae_1)="SAE"
+label(data$gelstix_12m_advev3_starh_1)="START TIME"
+label(data$gelstix_12m_advev3_stop_1)="STOP TIME"
+label(data$gelstix_12m_advevdesc3_1)="ADVERSE EVENT"
+label(data$gelstix_12m_advev3_inten_1)="MAXIMUM INTENSITY"
+label(data$gelstix_12m_advev3_actio_1)="ACTION TAKEN"
+label(data$gelstix_12m_advev3_relat_1)="RELATIONSHIP TO INVESTIGATIONAL PRODUCT"
+label(data$gelstix_12m_advev3_outc_1)="SUBJECT OUTCOME"
+label(data$gelstix_12m_advev3_sae_1)="SAE"
+label(data$months_adverse_event_2b662c_complete)="Complete?"
+label(data$pd_notdone_quest_12m_1)="NOT DONE"
+label(data$eq1_12m_1)="MOBILITY"
+label(data$eq2_12m_1)="SELF-CARE"
+label(data$eq3_12m_1)="USUAL ACTIVITIES (e.g. work, study, housework, family or leisure activities)"
+label(data$eq4_12m_1)="PAIN / DISCOMFORT"
+label(data$eq5_12m_1)="ANXIETY / DEPRESSION"
+label(data$eq6_12m_1)="We would like to know how good or bad your health is TODAY."
+label(data$o1_12m_1)="Pain intensity"
+label(data$o2_12m_1)="Personal care (washing, dressing etc)"
+label(data$o3_12m_1)="Lifting"
+label(data$o4_12m_1)="Walking"
+label(data$o5_12m_1)="Sitting"
+label(data$o6_12m_1)="Standing"
+label(data$o7_12m_1)="Sleeping"
+label(data$o8_12m_1)="Sex life (if applicable)"
+label(data$o9_12m_1)="Social life"
+label(data$o10_12m_1)="Travelling"
+label(data$pgic_12m_1)="Since the start of the study, my overall status is:"
+label(data$crossover_12m_1)="Crossover"
+label(data$quest_cecit_pz_12m_1)="QUESTIONARY OF THE EFFICACY OF BLINDING   PATIENT"
+label(data$quest_cecit_med_12m_1)="QUESTIONARY OF THE EFFICACY OF BLINDING   MEDICO"
+label(data$plac_gelstix_12m)="Treatment"
+label(data$months_questionnaires_c93271_complete)="Complete?"
+label(data$mri_date_12m_1)="MRI date"
+label(data$mri_l1_pf_12m_1)="PFIRRMANN"
+label(data$mri_l1_heigh_12m_1)="DISC HEIGH (mm)"
+label(data$mri_l1_hiz_12m_1)="HIZ"
+label(data$mri_l1_modic_12m_1)="MODIC SIGNS"
+label(data$mri_l1_schmorl_12m_1)="SCHMORL HERNIA"
+label(data$mri_l2_pf_12m_1)="PFIRRMANN"
+label(data$mri_l2_heigh_12m_1)="DISC HEIGH (mm)"
+label(data$mri_l2_hiz_12m_1)="HIZ"
+label(data$mri_l2_modic_12m_1)="MODIC SIGNS"
+label(data$mri_l2_schmorl_12m_1)="SCHMORL HERNIA"
+label(data$mri_l3_pf_12m_1)="PFIRRMANN"
+label(data$mri_l3_heigh_12m_1)="DISC HEIGH (mm)"
+label(data$mri_l3_hiz_12m_1)="HIZ"
+label(data$mri_l3_modic_12m_1)="MODIC SIGNS"
+label(data$mri_l3_schmorl_12m_1)="SCHMORL HERNIA"
+label(data$mri_l4_pf_12m_1)="PFIRRMANN"
+label(data$mri_l4_heigh_12m_1)="DISC HEIGH (mm)"
+label(data$mri_l4_hiz_12m_1)="HIZ"
+label(data$mri_l4_modic_12m_1)="MODIC SIGNS"
+label(data$mri_l4_schmorl_12m_1)="SCHMORL HERNIA"
+label(data$mri_l5_pf_12m_1)="PFIRRMANN"
+label(data$mri_l5_heigh_12m_1)="DISC HEIGH (mm)"
+label(data$mri_l5_hiz_12m_1)="HIZ"
+label(data$mri_l5_modic_12m_1)="MODIC SIGNS"
+label(data$mri_l5_schmorl_12m_1)="SCHMORL HERNIA"
+label(data$months_screening_rmi_complete)="Complete?"
+label(data$endt_date_1)="DATE OF EXAMINATION"
+label(data$endt_protocol_1)="DID THE SUBJECT COMPLETE THE PROTOCOL?"
+label(data$endt_reason_1)="REASON"
+label(data$endt_other_reason_1)="OTHER - REASON"
+label(data$end_date_signature_1)="DATE SIGNATURE"
+label(data$endt_signature_1)="SIGNATURE"
+label(data$end_of_trial_form_complete)="Complete?"
 #Setting Units
+
 
 #Setting Factors(will create new variable for factors)
 data$redcap_data_access_group.factor = factor(data$redcap_data_access_group,levels=c("oil","olanda"))
@@ -6927,6 +7833,486 @@ data$quest_cecit_pz_6m_1.factor = factor(data$quest_cecit_pz_6m_1,levels=c("1","
 data$quest_cecit_med_6m_1.factor = factor(data$quest_cecit_med_6m_1,levels=c("1","2","3"))
 data$plac_gelstix_6m.factor = factor(data$plac_gelstix_6m,levels=c("1","2"))
 data$months_questionnaires_55b815_complete.factor = factor(data$months_questionnaires_55b815_complete,levels=c("0","1","2"))
+data$months_ca1d31_complete.factor = factor(data$months_ca1d31_complete,levels=c("0","1","2"))
+data$es_occuptime_12m_1.factor = factor(data$es_occuptime_12m_1,levels=c("1","2","3","4"))
+data$es_parttime_12m_1.factor = factor(data$es_parttime_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"))
+data$es_legpain_12m_1.factor = factor(data$es_legpain_12m_1,levels=c("1","0"))
+data$es_backpain_12m_1.factor = factor(data$es_backpain_12m_1,levels=c("1","0"))
+data$es_disab_12m_1.factor = factor(data$es_disab_12m_1,levels=c("1","0"))
+data$es_sick_12m_1.factor = factor(data$es_sick_12m_1,levels=c("1","0"))
+data$es_other_12m_1.factor = factor(data$es_other_12m_1,levels=c("1","0"))
+data$months_employment_status_3a61ed_complete.factor = factor(data$months_employment_status_3a61ed_complete,levels=c("0","1","2"))
+data$pd_notdone_pd_12m_1.factor = factor(data$pd_notdone_pd_12m_1,levels=c("1"))
+data$pd_d1_9_12m_1.factor = factor(data$pd_d1_9_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_14_12m_1.factor = factor(data$pd_d1_14_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_20_12m_1.factor = factor(data$pd_d1_20_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacec1_12m_1.factor = factor(data$pd_d1_pfacec1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacec2_12m_1.factor = factor(data$pd_d1_pfacec2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacec3_12m_1.factor = factor(data$pd_d1_pfacec3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacem1_12m_1.factor = factor(data$pd_d1_pfacem1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacem2_12m_1.factor = factor(data$pd_d1_pfacem2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfacem3_12m_1.factor = factor(data$pd_d1_pfacem3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfami1_12m_1.factor = factor(data$pd_d1_pfami1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfami2_12m_1.factor = factor(data$pd_d1_pfami2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfami3_12m_1.factor = factor(data$pd_d1_pfami3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfbup1_12m_1.factor = factor(data$pd_d1_pfbup1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfbup2_12m_1.factor = factor(data$pd_d1_pfbup2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfbup3_12m_1.factor = factor(data$pd_d1_pfbup3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdex1_12m_1.factor = factor(data$pd_d1_pfdex1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdex2_12m_1.factor = factor(data$pd_d1_pfdex2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdex3_12m_1.factor = factor(data$pd_d1_pfdex3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdiclo1_12m_1.factor = factor(data$pd_d1_pfdiclo1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdiclo2_12m_1.factor = factor(data$pd_d1_pfdiclo2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdiclo3_12m_1.factor = factor(data$pd_d1_pfdiclo3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdul1_12m_1.factor = factor(data$pd_d1_pfdul1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdul2_12m_1.factor = factor(data$pd_d1_pfdul2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfdul3_12m_1.factor = factor(data$pd_d1_pfdul3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pffen1_12m_1.factor = factor(data$pd_d1_pffen1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pffen2_12m_1.factor = factor(data$pd_d1_pffen2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pffen3_12m_1.factor = factor(data$pd_d1_pffen3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfgab1_12m_1.factor = factor(data$pd_d1_pfgab1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfgab2_12m_1.factor = factor(data$pd_d1_pfgab2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfgab3_12m_1.factor = factor(data$pd_d1_pfgab3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfhyd1_12m_1.factor = factor(data$pd_d1_pfhyd1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfhyd2_12m_1.factor = factor(data$pd_d1_pfhyd2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfhyd3_12m_1.factor = factor(data$pd_d1_pfhyd3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfibu1_12m_1.factor = factor(data$pd_d1_pfibu1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfibu2_12m_1.factor = factor(data$pd_d1_pfibu2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfibu3_12m_1.factor = factor(data$pd_d1_pfibu3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfind1_12m_1.factor = factor(data$pd_d1_pfind1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfind2_12m_1.factor = factor(data$pd_d1_pfind2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfind3_12m_1.factor = factor(data$pd_d1_pfind3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfket1_12m_1.factor = factor(data$pd_d1_pfket1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfket2_12m_1.factor = factor(data$pd_d1_pfket2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfket3_12m_1.factor = factor(data$pd_d1_pfket3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmel1_12m_1.factor = factor(data$pd_d1_pfmel1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmel2_12m_1.factor = factor(data$pd_d1_pfmel2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmel3_12m_1.factor = factor(data$pd_d1_pfmel3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmeta1_12m_1.factor = factor(data$pd_d1_pfmeta1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmeta2_12m_1.factor = factor(data$pd_d1_pfmeta2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmeta3_12m_1.factor = factor(data$pd_d1_pfmeta3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmet1_12m_1.factor = factor(data$pd_d1_pfmet1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmet2_12m_1.factor = factor(data$pd_d1_pfmet2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmet3_12m_1.factor = factor(data$pd_d1_pfmet3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmor1_12m_1.factor = factor(data$pd_d1_pfmor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmor2_12m_1.factor = factor(data$pd_d1_pfmor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfmor3_12m_1.factor = factor(data$pd_d1_pfmor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnap1_12m_1.factor = factor(data$pd_d1_pfnap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnap2_12m_1.factor = factor(data$pd_d1_pfnap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnap3_12m_1.factor = factor(data$pd_d1_pfnap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnor1_12m_1.factor = factor(data$pd_d1_pfnor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnor2_12m_1.factor = factor(data$pd_d1_pfnor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfnor3_12m_1.factor = factor(data$pd_d1_pfnor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfoxy1_12m_1.factor = factor(data$pd_d1_pfoxy1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfoxy2_12m_1.factor = factor(data$pd_d1_pfoxy2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfoxy3_12m_1.factor = factor(data$pd_d1_pfoxy3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfparac1_12m_1.factor = factor(data$pd_d1_pfparac1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfparac2_12m_1.factor = factor(data$pd_d1_pfparac2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfparac3_12m_1.factor = factor(data$pd_d1_pfparac3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfphe1_12m_1.factor = factor(data$pd_d1_pfphe1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfphe2_12m_1.factor = factor(data$pd_d1_pfphe2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfphe3_12m_1.factor = factor(data$pd_d1_pfphe3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpreg1_12m_1.factor = factor(data$pd_d1_pfpreg1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpreg2_12m_1.factor = factor(data$pd_d1_pfpreg2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpreg3_12m_1.factor = factor(data$pd_d1_pfpreg3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpir1_12m_1.factor = factor(data$pd_d1_pfpir1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpir2_12m_1.factor = factor(data$pd_d1_pfpir2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pfpir3_12m_1.factor = factor(data$pd_d1_pfpir3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftap1_12m_1.factor = factor(data$pd_d1_pftap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftap2_12m_1.factor = factor(data$pd_d1_pftap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftap3_12m_1.factor = factor(data$pd_d1_pftap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftra1_12m_1.factor = factor(data$pd_d1_pftra1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftra2_12m_1.factor = factor(data$pd_d1_pftra2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d1_pftra3_12m_1.factor = factor(data$pd_d1_pftra3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_9_12m_1.factor = factor(data$pd_d2_9_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_14_12m_1.factor = factor(data$pd_d2_14_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_20_12m_1.factor = factor(data$pd_d2_20_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacec1_12m_1.factor = factor(data$pd_d2_pfacec1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacec2_12m_1.factor = factor(data$pd_d2_pfacec2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacec3_12m_1.factor = factor(data$pd_d2_pfacec3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacem1_12m_1.factor = factor(data$pd_d2_pfacem1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacem2_12m_1.factor = factor(data$pd_d2_pfacem2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfacem3_12m_1.factor = factor(data$pd_d2_pfacem3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfami1_12m_1.factor = factor(data$pd_d2_pfami1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfami2_12m_1.factor = factor(data$pd_d2_pfami2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfami3_12m_1.factor = factor(data$pd_d2_pfami3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfbup1_12m_1.factor = factor(data$pd_d2_pfbup1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfbup2_12m_1.factor = factor(data$pd_d2_pfbup2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfbup3_12m_1.factor = factor(data$pd_d2_pfbup3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdex1_12m_1.factor = factor(data$pd_d2_pfdex1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdex2_12m_1.factor = factor(data$pd_d2_pfdex2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdex3_12m_1.factor = factor(data$pd_d2_pfdex3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdiclo1_12m_1.factor = factor(data$pd_d2_pfdiclo1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdiclo2_12m_1.factor = factor(data$pd_d2_pfdiclo2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdiclo3_12m_1.factor = factor(data$pd_d2_pfdiclo3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdul1_12m_1.factor = factor(data$pd_d2_pfdul1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdul2_12m_1.factor = factor(data$pd_d2_pfdul2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfdul3_12m_1.factor = factor(data$pd_d2_pfdul3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pffen1_12m_1.factor = factor(data$pd_d2_pffen1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pffen2_12m_1.factor = factor(data$pd_d2_pffen2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pffen3_12m_1.factor = factor(data$pd_d2_pffen3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfgab1_12m_1.factor = factor(data$pd_d2_pfgab1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfgab2_12m_1.factor = factor(data$pd_d2_pfgab2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfgab3_12m_1.factor = factor(data$pd_d2_pfgab3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfhyd1_12m_1.factor = factor(data$pd_d2_pfhyd1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfhyd2_12m_1.factor = factor(data$pd_d2_pfhyd2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfhyd3_12m_1.factor = factor(data$pd_d2_pfhyd3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfibu1_12m_1.factor = factor(data$pd_d2_pfibu1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfibu2_12m_1.factor = factor(data$pd_d2_pfibu2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfibu3_12m_1.factor = factor(data$pd_d2_pfibu3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfind1_12m_1.factor = factor(data$pd_d2_pfind1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfind2_12m_1.factor = factor(data$pd_d2_pfind2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfind3_12m_1.factor = factor(data$pd_d2_pfind3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfket1_12m_1.factor = factor(data$pd_d2_pfket1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfket2_12m_1.factor = factor(data$pd_d2_pfket2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfket3_12m_1.factor = factor(data$pd_d2_pfket3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmel1_12m_1.factor = factor(data$pd_d2_pfmel1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmel2_12m_1.factor = factor(data$pd_d2_pfmel2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmel3_12m_1.factor = factor(data$pd_d2_pfmel3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmeta1_12m_1.factor = factor(data$pd_d2_pfmeta1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmeta2_12m_1.factor = factor(data$pd_d2_pfmeta2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmeta3_12m_1.factor = factor(data$pd_d2_pfmeta3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmet1_12m_1.factor = factor(data$pd_d2_pfmet1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmet2_12m_1.factor = factor(data$pd_d2_pfmet2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmet3_12m_1.factor = factor(data$pd_d2_pfmet3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmor1_12m_1.factor = factor(data$pd_d2_pfmor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmor2_12m_1.factor = factor(data$pd_d2_pfmor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfmor3_12m_1.factor = factor(data$pd_d2_pfmor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnap1_12m_1.factor = factor(data$pd_d2_pfnap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnap2_12m_1.factor = factor(data$pd_d2_pfnap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnap3_12m_1.factor = factor(data$pd_d2_pfnap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnor1_12m_1.factor = factor(data$pd_d2_pfnor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnor2_12m_1.factor = factor(data$pd_d2_pfnor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfnor3_12m_1.factor = factor(data$pd_d2_pfnor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfoxy1_12m_1.factor = factor(data$pd_d2_pfoxy1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfoxy2_12m_1.factor = factor(data$pd_d2_pfoxy2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfoxy3_12m_1.factor = factor(data$pd_d2_pfoxy3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfparac1_12m_1.factor = factor(data$pd_d2_pfparac1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfparac2_12m_1.factor = factor(data$pd_d2_pfparac2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfparac3_12m_1.factor = factor(data$pd_d2_pfparac3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfphe1_12m_1.factor = factor(data$pd_d2_pfphe1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfphe2_12m_1.factor = factor(data$pd_d2_pfphe2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfphe3_12m_1.factor = factor(data$pd_d2_pfphe3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpreg1_12m_1.factor = factor(data$pd_d2_pfpreg1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpreg2_12m_1.factor = factor(data$pd_d2_pfpreg2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpreg3_12m_1.factor = factor(data$pd_d2_pfpreg3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpir1_12m_1.factor = factor(data$pd_d2_pfpir1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpir2_12m_1.factor = factor(data$pd_d2_pfpir2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pfpir3_12m_1.factor = factor(data$pd_d2_pfpir3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftap1_12m_1.factor = factor(data$pd_d2_pftap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftap2_12m_1.factor = factor(data$pd_d2_pftap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftap3_12m_1.factor = factor(data$pd_d2_pftap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftra1_12m_1.factor = factor(data$pd_d2_pftra1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftra2_12m_1.factor = factor(data$pd_d2_pftra2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d2_pftra3_12m_1.factor = factor(data$pd_d2_pftra3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_9_12m_1.factor = factor(data$pd_d3_9_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_14_12m_1.factor = factor(data$pd_d3_14_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_20_12m_1.factor = factor(data$pd_d3_20_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacec1_12m_1.factor = factor(data$pd_d3_pfacec1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacec2_12m_1.factor = factor(data$pd_d3_pfacec2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacec3_12m_1.factor = factor(data$pd_d3_pfacec3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacem1_12m_1.factor = factor(data$pd_d3_pfacem1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacem2_12m_1.factor = factor(data$pd_d3_pfacem2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfacem3_12m_1.factor = factor(data$pd_d3_pfacem3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfami1_12m_1.factor = factor(data$pd_d3_pfami1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfami2_12m_1.factor = factor(data$pd_d3_pfami2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfami3_12m_1.factor = factor(data$pd_d3_pfami3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfbup1_12m_1.factor = factor(data$pd_d3_pfbup1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfbup2_12m_1.factor = factor(data$pd_d3_pfbup2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfbup3_12m_1.factor = factor(data$pd_d3_pfbup3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdex1_12m_1.factor = factor(data$pd_d3_pfdex1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdex2_12m_1.factor = factor(data$pd_d3_pfdex2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdex3_12m_1.factor = factor(data$pd_d3_pfdex3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdiclo1_12m_1.factor = factor(data$pd_d3_pfdiclo1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdiclo2_12m_1.factor = factor(data$pd_d3_pfdiclo2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdiclo3_12m_1.factor = factor(data$pd_d3_pfdiclo3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdul1_12m_1.factor = factor(data$pd_d3_pfdul1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdul2_12m_1.factor = factor(data$pd_d3_pfdul2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfdul3_12m_1.factor = factor(data$pd_d3_pfdul3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pffen1_12m_1.factor = factor(data$pd_d3_pffen1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pffen2_12m_1.factor = factor(data$pd_d3_pffen2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pffen3_12m_1.factor = factor(data$pd_d3_pffen3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfgab1_12m_1.factor = factor(data$pd_d3_pfgab1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfgab2_12m_1.factor = factor(data$pd_d3_pfgab2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfgab3_12m_1.factor = factor(data$pd_d3_pfgab3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfhyd1_12m_1.factor = factor(data$pd_d3_pfhyd1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfhyd2_12m_1.factor = factor(data$pd_d3_pfhyd2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfhyd3_12m_1.factor = factor(data$pd_d3_pfhyd3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfibu1_12m_1.factor = factor(data$pd_d3_pfibu1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfibu2_12m_1.factor = factor(data$pd_d3_pfibu2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfibu3_12m_1.factor = factor(data$pd_d3_pfibu3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfind1_12m_1.factor = factor(data$pd_d3_pfind1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfind2_12m_1.factor = factor(data$pd_d3_pfind2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfind3_12m_1.factor = factor(data$pd_d3_pfind3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfket1_12m_1.factor = factor(data$pd_d3_pfket1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfket2_12m_1.factor = factor(data$pd_d3_pfket2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfket3_12m_1.factor = factor(data$pd_d3_pfket3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmel1_12m_1.factor = factor(data$pd_d3_pfmel1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmel2_12m_1.factor = factor(data$pd_d3_pfmel2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmel3_12m_1.factor = factor(data$pd_d3_pfmel3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmeta1_12m_1.factor = factor(data$pd_d3_pfmeta1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmeta2_12m_1.factor = factor(data$pd_d3_pfmeta2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmeta3_12m_1.factor = factor(data$pd_d3_pfmeta3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmet1_12m_1.factor = factor(data$pd_d3_pfmet1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmet2_12m_1.factor = factor(data$pd_d3_pfmet2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmet3_12m_1.factor = factor(data$pd_d3_pfmet3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmor1_12m_1.factor = factor(data$pd_d3_pfmor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmor2_12m_1.factor = factor(data$pd_d3_pfmor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfmor3_12m_1.factor = factor(data$pd_d3_pfmor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnap1_12m_1.factor = factor(data$pd_d3_pfnap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnap2_12m_1.factor = factor(data$pd_d3_pfnap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnap3_12m_1.factor = factor(data$pd_d3_pfnap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnor1_12m_1.factor = factor(data$pd_d3_pfnor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnor2_12m_1.factor = factor(data$pd_d3_pfnor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfnor3_12m_1.factor = factor(data$pd_d3_pfnor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfoxy1_12m_1.factor = factor(data$pd_d3_pfoxy1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfoxy2_12m_1.factor = factor(data$pd_d3_pfoxy2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfoxy3_12m_1.factor = factor(data$pd_d3_pfoxy3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfparac1_12m_1.factor = factor(data$pd_d3_pfparac1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfparac2_12m_1.factor = factor(data$pd_d3_pfparac2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfparac3_12m_1.factor = factor(data$pd_d3_pfparac3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfphe1_12m_1.factor = factor(data$pd_d3_pfphe1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfphe2_12m_1.factor = factor(data$pd_d3_pfphe2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfphe3_12m_1.factor = factor(data$pd_d3_pfphe3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpreg1_12m_1.factor = factor(data$pd_d3_pfpreg1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpreg2_12m_1.factor = factor(data$pd_d3_pfpreg2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpreg3_12m_1.factor = factor(data$pd_d3_pfpreg3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpir1_12m_1.factor = factor(data$pd_d3_pfpir1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpir2_12m_1.factor = factor(data$pd_d3_pfpir2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pfpir3_12m_1.factor = factor(data$pd_d3_pfpir3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftap1_12m_1.factor = factor(data$pd_d3_pftap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftap2_12m_1.factor = factor(data$pd_d3_pftap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftap3_12m_1.factor = factor(data$pd_d3_pftap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftra1_12m_1.factor = factor(data$pd_d3_pftra1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftra2_12m_1.factor = factor(data$pd_d3_pftra2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d3_pftra3_12m_1.factor = factor(data$pd_d3_pftra3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_9_12m_1.factor = factor(data$pd_d4_9_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_14_12m_1.factor = factor(data$pd_d4_14_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_20_12m_1.factor = factor(data$pd_d4_20_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacec1_12m_1.factor = factor(data$pd_d4_pfacec1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacec2_12m_1.factor = factor(data$pd_d4_pfacec2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacec3_12m_1.factor = factor(data$pd_d4_pfacec3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacem1_12m_1.factor = factor(data$pd_d4_pfacem1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacem2_12m_1.factor = factor(data$pd_d4_pfacem2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfacem3_12m_1.factor = factor(data$pd_d4_pfacem3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfami1_12m_1.factor = factor(data$pd_d4_pfami1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfami2_12m_1.factor = factor(data$pd_d4_pfami2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfami3_12m_1.factor = factor(data$pd_d4_pfami3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfbup1_12m_1.factor = factor(data$pd_d4_pfbup1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfbup2_12m_1.factor = factor(data$pd_d4_pfbup2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfbup3_12m_1.factor = factor(data$pd_d4_pfbup3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdex1_12m_1.factor = factor(data$pd_d4_pfdex1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdex2_12m_1.factor = factor(data$pd_d4_pfdex2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdex3_12m_1.factor = factor(data$pd_d4_pfdex3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdiclo1_12m_1.factor = factor(data$pd_d4_pfdiclo1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdiclo2_12m_1.factor = factor(data$pd_d4_pfdiclo2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdiclo3_12m_1.factor = factor(data$pd_d4_pfdiclo3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdul1_12m_1.factor = factor(data$pd_d4_pfdul1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdul2_12m_1.factor = factor(data$pd_d4_pfdul2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfdul3_12m_1.factor = factor(data$pd_d4_pfdul3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pffen1_12m_1.factor = factor(data$pd_d4_pffen1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pffen2_12m_1.factor = factor(data$pd_d4_pffen2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pffen3_12m_1.factor = factor(data$pd_d4_pffen3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfgab1_12m_1.factor = factor(data$pd_d4_pfgab1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfgab2_12m_1.factor = factor(data$pd_d4_pfgab2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfgab3_12m_1.factor = factor(data$pd_d4_pfgab3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfhyd1_12m_1.factor = factor(data$pd_d4_pfhyd1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfhyd2_12m_1.factor = factor(data$pd_d4_pfhyd2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfhyd3_12m_1.factor = factor(data$pd_d4_pfhyd3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfibu1_12m_1.factor = factor(data$pd_d4_pfibu1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfibu2_12m_1.factor = factor(data$pd_d4_pfibu2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfibu3_12m_1.factor = factor(data$pd_d4_pfibu3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfind1_12m_1.factor = factor(data$pd_d4_pfind1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfind2_12m_1.factor = factor(data$pd_d4_pfind2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfind3_12m_1.factor = factor(data$pd_d4_pfind3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfket1_12m_1.factor = factor(data$pd_d4_pfket1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfket2_12m_1.factor = factor(data$pd_d4_pfket2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfket3_12m_1.factor = factor(data$pd_d4_pfket3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmel1_12m_1.factor = factor(data$pd_d4_pfmel1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmel2_12m_1.factor = factor(data$pd_d4_pfmel2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmel3_12m_1.factor = factor(data$pd_d4_pfmel3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmeta1_12m_1.factor = factor(data$pd_d4_pfmeta1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmeta2_12m_1.factor = factor(data$pd_d4_pfmeta2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmeta3_12m_1.factor = factor(data$pd_d4_pfmeta3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmet1_12m_1.factor = factor(data$pd_d4_pfmet1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmet2_12m_1.factor = factor(data$pd_d4_pfmet2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmet3_12m_1.factor = factor(data$pd_d4_pfmet3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmor1_12m_1.factor = factor(data$pd_d4_pfmor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmor2_12m_1.factor = factor(data$pd_d4_pfmor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfmor3_12m_1.factor = factor(data$pd_d4_pfmor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnap1_12m_1.factor = factor(data$pd_d4_pfnap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnap2_12m_1.factor = factor(data$pd_d4_pfnap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnap3_12m_1.factor = factor(data$pd_d4_pfnap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnor1_12m_1.factor = factor(data$pd_d4_pfnor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnor2_12m_1.factor = factor(data$pd_d4_pfnor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfnor3_12m_1.factor = factor(data$pd_d4_pfnor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfoxy1_12m_1.factor = factor(data$pd_d4_pfoxy1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfoxy2_12m_1.factor = factor(data$pd_d4_pfoxy2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfoxy3_12m_1.factor = factor(data$pd_d4_pfoxy3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfparac1_12m_1.factor = factor(data$pd_d4_pfparac1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfparac2_12m_1.factor = factor(data$pd_d4_pfparac2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfparac3_12m_1.factor = factor(data$pd_d4_pfparac3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfphe1_12m_1.factor = factor(data$pd_d4_pfphe1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfphe2_12m_1.factor = factor(data$pd_d4_pfphe2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfphe3_12m_1.factor = factor(data$pd_d4_pfphe3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpreg1_12m_1.factor = factor(data$pd_d4_pfpreg1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpreg2_12m_1.factor = factor(data$pd_d4_pfpreg2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpreg3_12m_1.factor = factor(data$pd_d4_pfpreg3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpir1_12m_1.factor = factor(data$pd_d4_pfpir1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpir2_12m_1.factor = factor(data$pd_d4_pfpir2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pfpir3_12m_1.factor = factor(data$pd_d4_pfpir3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftap1_12m_1.factor = factor(data$pd_d4_pftap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftap2_12m_1.factor = factor(data$pd_d4_pftap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftap3_12m_1.factor = factor(data$pd_d4_pftap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftra1_12m_1.factor = factor(data$pd_d4_pftra1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftra2_12m_1.factor = factor(data$pd_d4_pftra2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d4_pftra3_12m_1.factor = factor(data$pd_d4_pftra3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_9_12m_1.factor = factor(data$pd_d5_9_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_14_12m_1.factor = factor(data$pd_d5_14_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_20_12m_1.factor = factor(data$pd_d5_20_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacec1_12m_1.factor = factor(data$pd_d5_pfacec1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacec2_12m_1.factor = factor(data$pd_d5_pfacec2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacec3_12m_1.factor = factor(data$pd_d5_pfacec3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacem1_12m_1.factor = factor(data$pd_d5_pfacem1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacem2_12m_1.factor = factor(data$pd_d5_pfacem2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfacem3_12m_1.factor = factor(data$pd_d5_pfacem3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfami1_12m_1.factor = factor(data$pd_d5_pfami1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfami2_12m_1.factor = factor(data$pd_d5_pfami2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfami3_12m_1.factor = factor(data$pd_d5_pfami3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfbup1_12m_1.factor = factor(data$pd_d5_pfbup1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfbup2_12m_1.factor = factor(data$pd_d5_pfbup2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfbup3_12m_1.factor = factor(data$pd_d5_pfbup3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdex1_12m_1.factor = factor(data$pd_d5_pfdex1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdex2_12m_1.factor = factor(data$pd_d5_pfdex2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdex3_12m_1.factor = factor(data$pd_d5_pfdex3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdiclo1_12m_1.factor = factor(data$pd_d5_pfdiclo1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdiclo2_12m_1.factor = factor(data$pd_d5_pfdiclo2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdiclo3_12m_1.factor = factor(data$pd_d5_pfdiclo3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdul1_12m_1.factor = factor(data$pd_d5_pfdul1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdul2_12m_1.factor = factor(data$pd_d5_pfdul2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfdul3_12m_1.factor = factor(data$pd_d5_pfdul3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pffen1_12m_1.factor = factor(data$pd_d5_pffen1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pffen2_12m_1.factor = factor(data$pd_d5_pffen2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pffen3_12m_1.factor = factor(data$pd_d5_pffen3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfgab1_12m_1.factor = factor(data$pd_d5_pfgab1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfgab2_12m_1.factor = factor(data$pd_d5_pfgab2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfgab3_12m_1.factor = factor(data$pd_d5_pfgab3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfhyd1_12m_1.factor = factor(data$pd_d5_pfhyd1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfhyd2_12m_1.factor = factor(data$pd_d5_pfhyd2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfhyd3_12m_1.factor = factor(data$pd_d5_pfhyd3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfibu1_12m_1.factor = factor(data$pd_d5_pfibu1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfibu2_12m_1.factor = factor(data$pd_d5_pfibu2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfibu3_12m_1.factor = factor(data$pd_d5_pfibu3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfind1_12m_1.factor = factor(data$pd_d5_pfind1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfind2_12m_1.factor = factor(data$pd_d5_pfind2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfind3_12m_1.factor = factor(data$pd_d5_pfind3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfket1_12m_1.factor = factor(data$pd_d5_pfket1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfket2_12m_1.factor = factor(data$pd_d5_pfket2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfket3_12m_1.factor = factor(data$pd_d5_pfket3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmel1_12m_1.factor = factor(data$pd_d5_pfmel1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmel2_12m_1.factor = factor(data$pd_d5_pfmel2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmel3_12m_1.factor = factor(data$pd_d5_pfmel3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmeta1_12m_1.factor = factor(data$pd_d5_pfmeta1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmeta2_12m_1.factor = factor(data$pd_d5_pfmeta2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmeta3_12m_1.factor = factor(data$pd_d5_pfmeta3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmet1_12m_1.factor = factor(data$pd_d5_pfmet1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmet2_12m_1.factor = factor(data$pd_d5_pfmet2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmet3_12m_1.factor = factor(data$pd_d5_pfmet3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmor1_12m_1.factor = factor(data$pd_d5_pfmor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmor2_12m_1.factor = factor(data$pd_d5_pfmor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfmor3_12m_1.factor = factor(data$pd_d5_pfmor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnap1_12m_1.factor = factor(data$pd_d5_pfnap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnap2_12m_1.factor = factor(data$pd_d5_pfnap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnap3_12m_1.factor = factor(data$pd_d5_pfnap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnor1_12m_1.factor = factor(data$pd_d5_pfnor1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnor2_12m_1.factor = factor(data$pd_d5_pfnor2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfnor3_12m_1.factor = factor(data$pd_d5_pfnor3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfoxy1_12m_1.factor = factor(data$pd_d5_pfoxy1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfoxy2_12m_1.factor = factor(data$pd_d5_pfoxy2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfoxy3_12m_1.factor = factor(data$pd_d5_pfoxy3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfparac1_12m_1.factor = factor(data$pd_d5_pfparac1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfparac2_12m_1.factor = factor(data$pd_d5_pfparac2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfparac3_12m_1.factor = factor(data$pd_d5_pfparac3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfphe1_12m_1.factor = factor(data$pd_d5_pfphe1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfphe2_12m_1.factor = factor(data$pd_d5_pfphe2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfphe3_12m_1.factor = factor(data$pd_d5_pfphe3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpreg1_12m_1.factor = factor(data$pd_d5_pfpreg1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpreg2_12m_1.factor = factor(data$pd_d5_pfpreg2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpreg3_12m_1.factor = factor(data$pd_d5_pfpreg3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpir1_12m_1.factor = factor(data$pd_d5_pfpir1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpir2_12m_1.factor = factor(data$pd_d5_pfpir2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pfpir3_12m_1.factor = factor(data$pd_d5_pfpir3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftap1_12m_1.factor = factor(data$pd_d5_pftap1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftap2_12m_1.factor = factor(data$pd_d5_pftap2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftap3_12m_1.factor = factor(data$pd_d5_pftap3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftra1_12m_1.factor = factor(data$pd_d5_pftra1_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftra2_12m_1.factor = factor(data$pd_d5_pftra2_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$pd_d5_pftra3_12m_1.factor = factor(data$pd_d5_pftra3_12m_1,levels=c("1","2","3","4","5","6","7","8","9","10"))
+data$months_follow_up_pain_diary_15e6_complete.factor = factor(data$months_follow_up_pain_diary_15e6_complete,levels=c("0","1","2"))
+data$gelstix_12m_advev1_1.factor = factor(data$gelstix_12m_advev1_1,levels=c("1","0"))
+data$gelstix_12m_advev1_inten_1.factor = factor(data$gelstix_12m_advev1_inten_1,levels=c("1","2","3"))
+data$gelstix_12m_advev1_actio_1.factor = factor(data$gelstix_12m_advev1_actio_1,levels=c("1","2","3"))
+data$gelstix_12m_advev1_relat_1.factor = factor(data$gelstix_12m_advev1_relat_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev1_outc_1.factor = factor(data$gelstix_12m_advev1_outc_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev1_sae_1.factor = factor(data$gelstix_12m_advev1_sae_1,levels=c("1","0"))
+data$gelstix_12m_advev2_inten_1.factor = factor(data$gelstix_12m_advev2_inten_1,levels=c("1","2","3"))
+data$gelstix_12m_advev2_actio_1.factor = factor(data$gelstix_12m_advev2_actio_1,levels=c("1","2","3"))
+data$gelstix_12m_advev2_relat_1.factor = factor(data$gelstix_12m_advev2_relat_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev2_outc_1.factor = factor(data$gelstix_12m_advev2_outc_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev2_sae_1.factor = factor(data$gelstix_12m_advev2_sae_1,levels=c("1","0"))
+data$gelstix_12m_advev3_inten_1.factor = factor(data$gelstix_12m_advev3_inten_1,levels=c("1","2","3"))
+data$gelstix_12m_advev3_actio_1.factor = factor(data$gelstix_12m_advev3_actio_1,levels=c("1","2","3"))
+data$gelstix_12m_advev3_relat_1.factor = factor(data$gelstix_12m_advev3_relat_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev3_outc_1.factor = factor(data$gelstix_12m_advev3_outc_1,levels=c("1","2","3","4","5"))
+data$gelstix_12m_advev3_sae_1.factor = factor(data$gelstix_12m_advev3_sae_1,levels=c("1","0"))
+data$months_adverse_event_2b662c_complete.factor = factor(data$months_adverse_event_2b662c_complete,levels=c("0","1","2"))
+data$pd_notdone_quest_12m_1.factor = factor(data$pd_notdone_quest_12m_1,levels=c("1"))
+data$eq1_12m_1.factor = factor(data$eq1_12m_1,levels=c("0","1","2","3","4"))
+data$eq2_12m_1.factor = factor(data$eq2_12m_1,levels=c("0","1","2","3","4"))
+data$eq3_12m_1.factor = factor(data$eq3_12m_1,levels=c("0","1","2","3","4"))
+data$eq4_12m_1.factor = factor(data$eq4_12m_1,levels=c("0","1","2","3","4"))
+data$eq5_12m_1.factor = factor(data$eq5_12m_1,levels=c("0","1","2","3","4"))
+data$eq6_12m_1.factor = factor(data$eq6_12m_1,levels=c("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"))
+data$o1_12m_1.factor = factor(data$o1_12m_1,levels=c("0","1","2","3","4","5"))
+data$o2_12m_1.factor = factor(data$o2_12m_1,levels=c("0","1","2","3","4","5"))
+data$o3_12m_1.factor = factor(data$o3_12m_1,levels=c("0","1","2","3","4","5"))
+data$o4_12m_1.factor = factor(data$o4_12m_1,levels=c("0","1","2","3","4","5"))
+data$o5_12m_1.factor = factor(data$o5_12m_1,levels=c("0","1","2","3","4","5"))
+data$o6_12m_1.factor = factor(data$o6_12m_1,levels=c("0","1","2","3","4","5"))
+data$o7_12m_1.factor = factor(data$o7_12m_1,levels=c("0","1","2","3","4","5"))
+data$o8_12m_1.factor = factor(data$o8_12m_1,levels=c("0","1","2","3","4","5"))
+data$o9_12m_1.factor = factor(data$o9_12m_1,levels=c("0","1","2","3","4","5"))
+data$o10_12m_1.factor = factor(data$o10_12m_1,levels=c("0","1","2","3","4","5"))
+data$pgic_12m_1.factor = factor(data$pgic_12m_1,levels=c("1","2","3","4","5","6","7"))
+data$crossover_12m_1.factor = factor(data$crossover_12m_1,levels=c("1","0"))
+data$quest_cecit_pz_12m_1.factor = factor(data$quest_cecit_pz_12m_1,levels=c("1","2","3"))
+data$quest_cecit_med_12m_1.factor = factor(data$quest_cecit_med_12m_1,levels=c("1","2","3"))
+data$plac_gelstix_12m.factor = factor(data$plac_gelstix_12m,levels=c("1","2"))
+data$months_questionnaires_c93271_complete.factor = factor(data$months_questionnaires_c93271_complete,levels=c("0","1","2"))
+data$mri_l1_pf_12m_1.factor = factor(data$mri_l1_pf_12m_1,levels=c("1","2","3","4","5"))
+data$mri_l1_hiz_12m_1.factor = factor(data$mri_l1_hiz_12m_1,levels=c("1","2","3","4"))
+data$mri_l1_modic_12m_1.factor = factor(data$mri_l1_modic_12m_1,levels=c("1","2","3"))
+data$mri_l1_schmorl_12m_1.factor = factor(data$mri_l1_schmorl_12m_1,levels=c("1","2"))
+data$mri_l2_pf_12m_1.factor = factor(data$mri_l2_pf_12m_1,levels=c("1","2","3","4","5"))
+data$mri_l2_hiz_12m_1.factor = factor(data$mri_l2_hiz_12m_1,levels=c("1","2","3","4"))
+data$mri_l2_modic_12m_1.factor = factor(data$mri_l2_modic_12m_1,levels=c("1","2","3"))
+data$mri_l2_schmorl_12m_1.factor = factor(data$mri_l2_schmorl_12m_1,levels=c("1","2"))
+data$mri_l3_pf_12m_1.factor = factor(data$mri_l3_pf_12m_1,levels=c("1","2","3","4","5"))
+data$mri_l3_hiz_12m_1.factor = factor(data$mri_l3_hiz_12m_1,levels=c("1","2","3","4"))
+data$mri_l3_modic_12m_1.factor = factor(data$mri_l3_modic_12m_1,levels=c("1","2","3"))
+data$mri_l3_schmorl_12m_1.factor = factor(data$mri_l3_schmorl_12m_1,levels=c("1","2"))
+data$mri_l4_pf_12m_1.factor = factor(data$mri_l4_pf_12m_1,levels=c("1","2","3","4","5"))
+data$mri_l4_hiz_12m_1.factor = factor(data$mri_l4_hiz_12m_1,levels=c("1","2","3","4"))
+data$mri_l4_modic_12m_1.factor = factor(data$mri_l4_modic_12m_1,levels=c("1","2","3"))
+data$mri_l4_schmorl_12m_1.factor = factor(data$mri_l4_schmorl_12m_1,levels=c("1","2"))
+data$mri_l5_pf_12m_1.factor = factor(data$mri_l5_pf_12m_1,levels=c("1","2","3","4","5"))
+data$mri_l5_hiz_12m_1.factor = factor(data$mri_l5_hiz_12m_1,levels=c("1","2","3","4"))
+data$mri_l5_modic_12m_1.factor = factor(data$mri_l5_modic_12m_1,levels=c("1","2","3"))
+data$mri_l5_schmorl_12m_1.factor = factor(data$mri_l5_schmorl_12m_1,levels=c("1","2"))
+data$months_screening_rmi_complete.factor = factor(data$months_screening_rmi_complete,levels=c("0","1","2"))
+data$endt_protocol_1.factor = factor(data$endt_protocol_1,levels=c("1","2"))
+data$endt_reason_1.factor = factor(data$endt_reason_1,levels=c("1","2","3","4","5","6","7"))
+data$end_of_trial_form_complete.factor = factor(data$end_of_trial_form_complete,levels=c("0","1","2"))
 
 levels(data$redcap_data_access_group.factor)=c("OIL","OLANDA")
 levels(data$my_first_instrument_complete.factor)=c("Incomplete","Unverified","Complete")
@@ -9228,14 +10614,483 @@ levels(data$quest_cecit_pz_6m_1.factor)=c("I think the patient has (I have) been
 levels(data$quest_cecit_med_6m_1.factor)=c("I think the patient has (I have) been treated with GelStix™","- I think the patient has (I have) not been treated with GelStix™","I dont know if the patient is ( I am) been treated with GelStix™ or not")
 levels(data$plac_gelstix_6m.factor)=c("Placebo","Gelstix")
 levels(data$months_questionnaires_55b815_complete.factor)=c("Incomplete","Unverified","Complete")
-
-### Check data, remove empty variables, save for further use.
-
-dim(data)
-
-d <- data[ , colSums(is.na(data)) < nrow(data)]  # Remove columns with NA only
-save(d, file = "GELSTIX_data.Rda")
-
-rm(d, data)
-
-### End of file.
+levels(data$months_ca1d31_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$es_occuptime_12m_1.factor)=c("FULL","PART TIME","UNEMPLOYED","RESTRICTED EMPLOYMENT")
+levels(data$es_parttime_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100")
+levels(data$es_legpain_12m_1.factor)=c("Yes","No")
+levels(data$es_backpain_12m_1.factor)=c("Yes","No")
+levels(data$es_disab_12m_1.factor)=c("Yes","No")
+levels(data$es_sick_12m_1.factor)=c("Yes","No")
+levels(data$es_other_12m_1.factor)=c("Yes","No")
+levels(data$months_employment_status_3a61ed_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$pd_notdone_pd_12m_1.factor)=c("ND")
+levels(data$pd_d1_9_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_14_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_20_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacec1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacec2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacec3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacem1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacem2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfacem3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfami1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfami2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfami3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfbup1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfbup2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfbup3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdex1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdex2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdex3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdiclo1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdiclo2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdiclo3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdul1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdul2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfdul3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pffen1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pffen2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pffen3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfgab1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfgab2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfgab3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfhyd1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfhyd2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfhyd3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfibu1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfibu2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfibu3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfind1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfind2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfind3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfket1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfket2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfket3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmel1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmel2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmel3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmeta1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmeta2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmeta3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmet1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmet2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmet3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfmor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfnor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfoxy1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfoxy2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfoxy3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfparac1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfparac2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfparac3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfphe1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfphe2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfphe3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpreg1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpreg2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpreg3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpir1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpir2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pfpir3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftra1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftra2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d1_pftra3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_9_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_14_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_20_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacec1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacec2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacec3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacem1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacem2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfacem3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfami1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfami2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfami3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfbup1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfbup2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfbup3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdex1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdex2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdex3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdiclo1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdiclo2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdiclo3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdul1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdul2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfdul3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pffen1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pffen2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pffen3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfgab1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfgab2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfgab3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfhyd1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfhyd2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfhyd3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfibu1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfibu2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfibu3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfind1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfind2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfind3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfket1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfket2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfket3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmel1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmel2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmel3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmeta1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmeta2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmeta3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmet1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmet2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmet3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfmor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfnor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfoxy1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfoxy2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfoxy3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfparac1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfparac2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfparac3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfphe1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfphe2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfphe3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpreg1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpreg2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpreg3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpir1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpir2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pfpir3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftra1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftra2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d2_pftra3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_9_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_14_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_20_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacec1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacec2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacec3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacem1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacem2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfacem3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfami1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfami2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfami3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfbup1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfbup2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfbup3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdex1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdex2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdex3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdiclo1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdiclo2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdiclo3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdul1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdul2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfdul3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pffen1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pffen2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pffen3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfgab1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfgab2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfgab3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfhyd1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfhyd2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfhyd3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfibu1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfibu2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfibu3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfind1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfind2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfind3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfket1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfket2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfket3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmel1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmel2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmel3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmeta1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmeta2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmeta3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmet1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmet2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmet3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfmor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfnor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfoxy1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfoxy2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfoxy3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfparac1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfparac2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfparac3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfphe1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfphe2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfphe3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpreg1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpreg2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpreg3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpir1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpir2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pfpir3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftra1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftra2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d3_pftra3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_9_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_14_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_20_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacec1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacec2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacec3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacem1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacem2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfacem3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfami1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfami2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfami3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfbup1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfbup2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfbup3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdex1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdex2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdex3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdiclo1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdiclo2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdiclo3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdul1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdul2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfdul3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pffen1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pffen2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pffen3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfgab1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfgab2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfgab3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfhyd1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfhyd2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfhyd3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfibu1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfibu2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfibu3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfind1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfind2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfind3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfket1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfket2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfket3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmel1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmel2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmel3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmeta1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmeta2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmeta3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmet1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmet2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmet3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfmor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfnor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfoxy1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfoxy2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfoxy3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfparac1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfparac2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfparac3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfphe1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfphe2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfphe3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpreg1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpreg2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpreg3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpir1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpir2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pfpir3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftra1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftra2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d4_pftra3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_9_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_14_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_20_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacec1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacec2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacec3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacem1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacem2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfacem3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfami1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfami2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfami3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfbup1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfbup2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfbup3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdex1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdex2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdex3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdiclo1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdiclo2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdiclo3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdul1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdul2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfdul3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pffen1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pffen2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pffen3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfgab1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfgab2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfgab3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfhyd1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfhyd2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfhyd3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfibu1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfibu2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfibu3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfind1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfind2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfind3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfket1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfket2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfket3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmel1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmel2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmel3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmeta1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmeta2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmeta3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmet1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmet2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmet3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfmor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnor1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnor2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfnor3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfoxy1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfoxy2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfoxy3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfparac1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfparac2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfparac3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfphe1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfphe2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfphe3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpreg1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpreg2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpreg3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpir1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpir2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pfpir3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftap1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftap2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftap3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftra1_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftra2_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$pd_d5_pftra3_12m_1.factor)=c("1","2","3","4","5","6","7","8","9","10")
+levels(data$months_follow_up_pain_diary_15e6_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$gelstix_12m_advev1_1.factor)=c("Yes","No")
+levels(data$gelstix_12m_advev1_inten_1.factor)=c("MILD","MODERATE","SEVERE")
+levels(data$gelstix_12m_advev1_actio_1.factor)=c("NONE","IMPLANTATION STOPPED","NOT APPLICABLE")
+levels(data$gelstix_12m_advev1_relat_1.factor)=c("NONE","UNLIKELY","POSSIBLE","PROBABLE","DEFINITE")
+levels(data$gelstix_12m_advev1_outc_1.factor)=c("RECOVERED","RECOVERED WITH SEQUELAE","AE STILL PRESENT","DIED","DATA NOT AVAILABLE")
+levels(data$gelstix_12m_advev1_sae_1.factor)=c("Yes","No")
+levels(data$gelstix_12m_advev2_inten_1.factor)=c("MILD","MODERATE","SEVERE")
+levels(data$gelstix_12m_advev2_actio_1.factor)=c("NONE","IMPLANTATION STOPPED","NOT APPLICABLE")
+levels(data$gelstix_12m_advev2_relat_1.factor)=c("NONE","UNLIKELY","POSSIBLE","PROBABLE","DEFINITE")
+levels(data$gelstix_12m_advev2_outc_1.factor)=c("RECOVERED","RECOVERED WITH SEQUELAE","AE STILL PRESENT","DIED","DATA NOT AVAILABLE")
+levels(data$gelstix_12m_advev2_sae_1.factor)=c("Yes","No")
+levels(data$gelstix_12m_advev3_inten_1.factor)=c("MILD","MODERATE","SEVERE")
+levels(data$gelstix_12m_advev3_actio_1.factor)=c("NONE","IMPLANTATION STOPPED","NOT APPLICABLE")
+levels(data$gelstix_12m_advev3_relat_1.factor)=c("NONE","UNLIKELY","POSSIBLE","PROBABLE","DEFINITE")
+levels(data$gelstix_12m_advev3_outc_1.factor)=c("RECOVERED","RECOVERED WITH SEQUELAE","AE STILL PRESENT","DIED","DATA NOT AVAILABLE")
+levels(data$gelstix_12m_advev3_sae_1.factor)=c("Yes","No")
+levels(data$months_adverse_event_2b662c_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$pd_notdone_quest_12m_1.factor)=c("ND")
+levels(data$eq1_12m_1.factor)=c("I have no problems in walking about","I have slight problems in walking about","I have moderate problems in walking about","I have severe problems in walking about","I am unable to walk about")
+levels(data$eq2_12m_1.factor)=c("I have no problems washing or dressing myself","I have slight problems washing or dressing myself","I have moderate problems washing or dressing myself","I have severe problems washing or dressing myself","I am unable to wash or dress myself")
+levels(data$eq3_12m_1.factor)=c("I have no problems doing my usual activities","I have slight problems doing my usual activities","I have moderate problems doing my usual activities","I have severe problems doing my usual activities","I am unable to do my usual activities")
+levels(data$eq4_12m_1.factor)=c("I have no pain or discomfort","I have slight pain or discomfort","I have moderate pain or discomfort","I have severe pain or discomfort","I have extreme pain or discomfort")
+levels(data$eq5_12m_1.factor)=c("I am not anxious or depressed","I am slightly anxious or depressed","I am moderately anxious or depressed","I am severely anxious or depressed","I am extremely anxious or depressed")
+levels(data$eq6_12m_1.factor)=c("0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100")
+levels(data$o1_12m_1.factor)=c("I have no pain at the moment","The pain is very mild at the moment","The pain is moderate at the moment","The pain is fairly severe at the moment","The pain is very severe at the moment","The pain is the worst imaginable at the moment")
+levels(data$o2_12m_1.factor)=c("I can look after myself normally without causing extra pain","I can look after myself normally but it causes extra pain","It is painful to look after myself and I am slow and careful","I need some help but manage most of my personal care","I need help every day in most aspects of self-care","I do not get dressed, I wash with difficulty and stay in bed")
+levels(data$o3_12m_1.factor)=c("I can lift heavy weights without extra pain","I can lift heavy weights but it gives extra pain","gives extra pain Pain prevents me from lifting heavy weights off the floor, but I can manage if they are conveniently placed eg. on a table","Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned","I can lift very light weights","I cannot lift or carry anything at all")
+levels(data$o4_12m_1.factor)=c("Pain does not prevent me walking any distance","Pain prevents me from walking more than 1 mile","Pain prevents me from walking more than 1/2 mile","Pain prevents me from walking more than 100 yards","I can only walk using a stick or crutches","I am in bed most of the time")
+levels(data$o5_12m_1.factor)=c("I can sit in any chair as long as I like","I can only sit in my favourite chair as long as I like","Pain prevents me sitting more than one hour","Pain prevents me from sitting more than 30 minutes","Pain prevents me from sitting more than 10 minutes","Pain prevents me from sitting at all")
+levels(data$o6_12m_1.factor)=c("I can stand as long as I want without extra pain","I can stand as long as I want but it gives me extra pain","Pain prevents me from standing for more than 1 hour","Pain prevents me from standing for more than 30 minutes","Pain prevents me from standing for more than 10 minutes","Pain prevents me from standing at all")
+levels(data$o7_12m_1.factor)=c("My sleep is never disturbed by pain","My sleep is occasionally disturbed by pain","Because of pain I have less than 6 hours sleep","Because of pain I have less than 4 hours sleep","Because of pain I have less than 2 hours sleep","Pain prevents me from sleeping at all")
+levels(data$o8_12m_1.factor)=c("My sex life is normal and causes no extra pain","My sex life is normal but causes some extra pain","My sex life is nearly normal but is very painful","My sex life is severely restricted by pain","My sex life is nearly absent because of pain","Pain prevents any sex life at all")
+levels(data$o9_12m_1.factor)=c("My social life is normal and gives me no extra pain","My social life is normal but increases the degree of pain","Pain has no significant effect on my social life apart from limiting my more energetic interests eg, sport","Pain has restricted my social life and I do not go out as often","Pain has restricted my social life to my home","I have no social life because of pain")
+levels(data$o10_12m_1.factor)=c("I can travel anywhere without pain","I can travel anywhere but it gives me extra pain","Pain is bad but I manage journeys over two hours","Pain restricts me to journeys of less than one hour","Pain restricts me to short necessary journeys under 30 minutes","Pain prevents me from travelling except to receive treatment")
+levels(data$pgic_12m_1.factor)=c("Very much improved","Much improved","Minimally improved","No change","Minimally worse","Much worse","Very much worse")
+levels(data$crossover_12m_1.factor)=c("Yes","No")
+levels(data$quest_cecit_pz_12m_1.factor)=c("I think the patient has (I have) been treated with GelStix™","I think the patient has (I have) not been treated with GelStix™","I dont know if the patient is ( I am) been treated with GelStix™ or not")
+levels(data$quest_cecit_med_12m_1.factor)=c("I think the patient has (I have) been treated with GelStix™","I think the patient has (I have) not been treated with GelStix™","I dont know if the patient is ( I am) been treated with GelStix™ or not")
+levels(data$plac_gelstix_12m.factor)=c("Placebo","Gelstix")
+levels(data$months_questionnaires_c93271_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$mri_l1_pf_12m_1.factor)=c("I","II","III","IV","V")
+levels(data$mri_l1_hiz_12m_1.factor)=c("A","B","C","D")
+levels(data$mri_l1_modic_12m_1.factor)=c("NO MODIC","TYPE 1","TYPE 2")
+levels(data$mri_l1_schmorl_12m_1.factor)=c("YES","NO")
+levels(data$mri_l2_pf_12m_1.factor)=c("I","II","III","IV","V")
+levels(data$mri_l2_hiz_12m_1.factor)=c("A","B","C","D")
+levels(data$mri_l2_modic_12m_1.factor)=c("NO MODIC","TYPE 1","TYPE 2")
+levels(data$mri_l2_schmorl_12m_1.factor)=c("YES","NO")
+levels(data$mri_l3_pf_12m_1.factor)=c("I","II","III","IV","V")
+levels(data$mri_l3_hiz_12m_1.factor)=c("A","B","C","D")
+levels(data$mri_l3_modic_12m_1.factor)=c("NO MODIC","TYPE 1","TYPE 2")
+levels(data$mri_l3_schmorl_12m_1.factor)=c("YES","NO")
+levels(data$mri_l4_pf_12m_1.factor)=c("I","II","III","IV","V")
+levels(data$mri_l4_hiz_12m_1.factor)=c("A","B","C","D")
+levels(data$mri_l4_modic_12m_1.factor)=c("NO MODIC","TYPE 1","TYPE 2")
+levels(data$mri_l4_schmorl_12m_1.factor)=c("YES","NO")
+levels(data$mri_l5_pf_12m_1.factor)=c("I","II","III","IV","V")
+levels(data$mri_l5_hiz_12m_1.factor)=c("A","B","C","D")
+levels(data$mri_l5_modic_12m_1.factor)=c("NO MODIC","TYPE 1","TYPE 2")
+levels(data$mri_l5_schmorl_12m_1.factor)=c("YES","NO")
+levels(data$months_screening_rmi_complete.factor)=c("Incomplete","Unverified","Complete")
+levels(data$endt_protocol_1.factor)=c("YES","NO (if No, please explain which data are not available and give the reason)")
+levels(data$endt_reason_1.factor)=c("PATIENT DETERMINED INELIGIBLE DURING FINAL SCREENING PROCESS PRIOR TO IMPLANTATION","PATIENT EXCLUDED DUE TO INTRA-OPERATIVE EXCLUSION","DEVICE REMOVED AND NOT RE-IMPLANTED","PATIENT WITHDREV FROM STUDY","PATIENT LOST TO FOLLOW-UP","PATIENT DECEASED","OTHER")
+levels(data$end_of_trial_form_complete.factor)=c("Incomplete","Unverified","Complete")
