@@ -157,6 +157,15 @@ d$eq12 <- eq5d(scores = scores_12, version = "5L", type = "VT",
               country = "Netherlands", ignore.invalid = TRUE)
 rm(scores_12)
 
+# Surgical fear
+View(data.frame(d$feari1_1, d$feari2_1, d$feari3_1, d$feari4_1,
+           d$feari5_1, d$feari6_1, d$feari7_1, d$feari8_1))
+
+d$sfq <- rowSums(data.frame(d$feari1_1, d$feari3_1, d$feari4_1,
+                            d$feari5_1, d$feari6_1, d$feari7_1),
+                 na.rm = TRUE)/c(rep(1, 12), 5/6, 1, 5/6, rep(1, 31))
+
+
 # Pfirrmann
 d$mri_l1_pf_12m_1
 d$mri_l2_pf_12m_1
@@ -221,22 +230,22 @@ d$mri_l5_schmorl_12m_1
 # di_imp <- mice(di, m = m, method = "pmm", predictorMatrix = pred, seed = 7181,
 #                maxit = 20)
 
-keep <- c("record_id", "id_patient_1", "i1", "i2", "i3", "i4", "i5", "i6", "i7",
-          "e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8", "e9", "e10", "e11",
-          "e12", "eligibility", "ttt_sgage_1",
-          "ttt_sgsex_1", "ttt_sj_smo_1", "psc", "pw1", "pm1", "pm3", "pm6",
-          "pm12", "pcs", "pses", "hads_as", "hads_ds", "odis", "odi3", "odi6",
-          "odi12", "eqs", "eq3", "eq6", "eq12", "pgic_3m_1", "pgic_6m_1",
-          "pgic_12_1",  "mri_l1_pf_12m_1",
-          "mri_l2_pf_12m_1", "mri_l3_pf_12m_1", "mri_l4_pf_12m_1",
-          "mri_l5_pf_12m_1", "mri_l1_hiz_12m_1", "mri_l2_hiz_12m_1",
-          "mri_l3_hiz_12m_1", "mri_l4_hiz_12m_1", "mri_l5_hiz_12m_1",
-          "mri_l1_modic_12m_1", "mri_l2_modic_12m_1", "mri_l3_modic_12m_1",
-          "mri_l4_modic_12m_1", "mri_l5_modic_12m_1", "mri_l1_schmorl_12m_1",
-          "mri_l2_schmorl_12m_1", "mri_l3_schmorl_12m_1", "mri_l4_schmorl_12m_1",
-          "mri_l5_schmorl_12m_1","plac_gelstix_6m.factor")
-d <- d[,(names(d) %in% keep)]
-write_sav(d, "gelstix.sav")
+# keep <- c("record_id", "id_patient_1", "i1", "i2", "i3", "i4", "i5", "i6", "i7",
+#           "e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8", "e9", "e10", "e11",
+#           "e12", "eligibility", "ttt_sgage_1",
+#           "ttt_sgsex_1", "ttt_sj_smo_1", "psc", "pw1", "pm1", "pm3", "pm6",
+#           "pm12", "pcs", "pses", "hads_as", "hads_ds", "odis", "odi3", "odi6",
+#           "odi12", "eqs", "eq3", "eq6", "eq12", "pgic_3m_1", "pgic_6m_1",
+#           "pgic_12_1",  "mri_l1_pf_12m_1",
+#           "mri_l2_pf_12m_1", "mri_l3_pf_12m_1", "mri_l4_pf_12m_1",
+#           "mri_l5_pf_12m_1", "mri_l1_hiz_12m_1", "mri_l2_hiz_12m_1",
+#           "mri_l3_hiz_12m_1", "mri_l4_hiz_12m_1", "mri_l5_hiz_12m_1",
+#           "mri_l1_modic_12m_1", "mri_l2_modic_12m_1", "mri_l3_modic_12m_1",
+#           "mri_l4_modic_12m_1", "mri_l5_modic_12m_1", "mri_l1_schmorl_12m_1",
+#           "mri_l2_schmorl_12m_1", "mri_l3_schmorl_12m_1", "mri_l4_schmorl_12m_1",
+#           "mri_l5_schmorl_12m_1","plac_gelstix_6m.factor")
+# d <- d[,(names(d) %in% keep)]
+# write_sav(d, "gelstix.sav")
 
 # Save the final data files, ready for analyses
 save(d, file = "GELSTIX_data_final.Rda")
