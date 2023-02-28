@@ -202,6 +202,18 @@ pf <- data.frame(pfir, rand)
 table(pf$pfir, pf$rand)
 round(prop.table(table(pf$pfir, pf$rand), 2)*100, 1)
 
+# Pfirman at 12m
+d$pfir_tr3_12 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_pf_12m_1, NA)
+d$pfir_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_pf_12m_1, NA)
+d$pfir_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_pf_12m_1, NA)
+pfir12 <- c(d$pfir_tr3_12, d$pfir_tr4_12, d$pfir_tr5_12)
+rand <- rep(d$plac_gelstix_6m.factor, 3)
+pf12 <- data.frame(pfir12, rand)
+
+table(pf12$pfir, pf12$rand)
+round(prop.table(table(pf12$pfir, pf12$rand), 2)*100, 1)
+fisher.test(table(pf12$pfir, pf12$rand))
+
 # Disc height
 d$height_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_1, NA)
 d$height_tr4 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_1, NA)
@@ -214,6 +226,21 @@ sum(is.na(he$heig))
 aggregate(he$heig, by = list(he$rand), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
                           sd = round(sd(x, na.rm = TRUE), 1)))
+
+# Disc height at 12m
+d$height_tr3_12 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_12m_1, NA)
+d$height_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_12m_1, NA)
+d$height_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_heigh_12m_1, NA)
+heig12 <- c(d$height_tr3_12, d$height_tr4_12, d$height_tr5_12)
+rand <- rep(d$plac_gelstix_6m.factor, 3)
+he12 <- data.frame(heig12, rand)
+
+sum(is.na(he12$heig12))
+aggregate(he12$heig12, by = list(he12$rand), FUN =
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
+                          sd = round(sd(x, na.rm = TRUE), 1)))
+
+t.test(he12$heig12 ~ he12$rand)
 
 # HIZ
 d$hiz_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_hiz_1, NA)
@@ -238,6 +265,29 @@ table(sc$schm, sc$rand)
 round(prop.table(table(sc$schm, sc$rand), 2)*100, 1)
 
 d$mri_l3_schmorl_1.factor
+
+# Modic
+d$mod_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_modic_1.factor, NA)
+d$mod_tr4 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_modic_1.factor, NA)
+d$mod_tr5 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_modic_1.factor, NA)
+modi <- c(d$mod_tr3, d$mod_tr4, d$mod_tr5)
+rand <- rep(d$plac_gelstix_6m.factor, 3)
+mod <- data.frame(modi, rand)
+
+table(mod$modi, mod$rand)
+round(prop.table(table(mod$modi, mod$rand), 2)*100, 1)
+
+# Modic at 12m
+d$mod_tr3_12 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_modic_12m_1, NA)
+d$mod_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_modic_12m_1, NA)
+d$mod_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_modic_12m_1, NA)
+modi12 <- c(d$mod_tr3_12, d$mod_tr4_12, d$mod_tr5_12)
+rand <- rep(d$plac_gelstix_6m.factor, 3)
+mod12 <- data.frame(modi12, rand)
+
+table(mod12$modi12, mod12$rand)
+round(prop.table(table(mod12$modi12, mod12$rand), 2)*100, 1)
+fisher.test(table(mod12$modi12, mod12$rand))
 
 # Analysis of primary outcome
 d$pchange_6m <- round(d$psc - d$pm6, 1)
@@ -306,6 +356,12 @@ t.test(d$eq6[d$plac_gelstix_6m.factor == "Placebo"],
        d$eqs[d$plac_gelstix_6m.factor == "Placebo"], paired = TRUE)
 
 # Secondary outcomes: employment status
+table(d$es_occuptime_1.factor, d$es_occuptime_6m_1.factor)
+d$occ_change <- ifelse(d$es_occuptime_1.factor == d$es_occuptime_6m_1.factor, 1, 0)
+table(d$occ_change, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$occ_change, d$plac_gelstix_6m.factor), 2)*100, 1)
+chisq.test(table(d$occ_change, d$plac_gelstix_6m.factor))
+
 d$es_occuptime_6m_1.factor <- factor(d$es_occuptime_6m_1.factor)
 table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor)
 chisq.test(table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor))
@@ -313,23 +369,23 @@ chisq.test(table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor))
 # Secondary outcomes: PGIC
 # Create data
 
-round(prop.table(table(d$pgic_3m_1.factor, d$plac_gelstix_6m.factor), 2)*100)
-round(prop.table(table(d$pgic_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100)
+round(prop.table(table(d$pgic_3m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
+round(prop.table(table(d$pgic_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 
 fig <- data.frame(group = c("Gelstix","Sham"),
-           value1 = c(4, 0),
-           value2 = c(13, 9),
-           value3 = c(22, 30),
-           value4 = c(30, 26),
-           value5 = c(22, 22),
-           value6 = c(4, 13),
-           value7 = c(4, 0),
-           value8 = c(18, 0),
-           value9 = c(9, 0),
-           value10 = c(27, 26),
-           value11 = c(23, 39),
-           value12 = c(5, 13),
-           value13 = c(18, 17),
+           value1 = c(4.3, 0),
+           value2 = c(13, 8.7),
+           value3 = c(21.7, 30.4),
+           value4 = c(30.4, 26.1),
+           value5 = c(21.7, 21.7),
+           value6 = c(4.3, 13),
+           value7 = c(4.3, 0),
+           value8 = c(18.2, 0),
+           value9 = c(9.1, 0),
+           value10 = c(27.3, 26.1),
+           value11 = c(22.7, 39.1),
+           value12 = c(4.5, 13),
+           value13 = c(18.2, 17.4),
            value14 = c(0, 4))
 
 # # create color palette:
@@ -338,12 +394,55 @@ fig <- data.frame(group = c("Gelstix","Sham"),
 
 # Kleuren nog aanpassen!
 melted <- melt(fig, "group")
-melted$mnd <- c(rep("3m", 14), rep("6m", 14))
+melted$mnd <- c(rep("3 months", 14), rep("6 months", 14))
 melted$variable[15:28] <- melted$variable[1:14]
+melted$variable <- factor(melted$variable)
+levels(melted$variable) <- c("Very much improved", "Much improved",
+                             "Minimally improved", "No change", "Minimally worse",
+                             "Much worse", "Very much worse")
+melted$Score <- melted$variable
 
-ggplot(melted, aes(x = group, y = value, fill = variable)) + 
-  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ mnd)
+setwd("~/Documents/work/research/gelstix/plots")
+jpeg("gelstix_pgic.jpg", width = 800, height = 500, quality = 100,  pointsize = 20)
+ggplot(melted, aes(x = group, y = value, fill = Score)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ mnd) +
+  xlab("Group") + ylab("Percent") + scale_fill_brewer(palette = "RdYlGn",
+  direction = -1) + theme(text = element_text(size = 20))      
+dev.off()
 
+d$success3m <- ifelse(d$pgic_3m_1.factor == "Very much improved" |
+                      d$pgic_3m_1.factor == "Much improved", 1, 0)
+d$success6m <- ifelse(d$pgic_6m_1.factor == "Very much improved" |
+                      d$pgic_6m_1.factor == "Much improved", 1, 0)
+
+table(d$success3m, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$success3m, d$plac_gelstix_6m.factor), 2)*100, 1)
+fisher.test(table(d$success3m, d$plac_gelstix_6m.factor))
+
+table(d$success6m, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$success6m, d$plac_gelstix_6m.factor), 2)*100, 1)
+fisher.test(table(d$success6m, d$plac_gelstix_6m.factor))
+
+# Sick leave
+round(sum(is.na(d$es_sick_1.factor))/length(d$record_id)*100)
+round(sum(is.na(d$es_sick_6m_1.factor))/length(d$record_id)*100)
+
+# Table MRI
+
+# (S)AE's
+table(d$gelstix_3m_advev1_sae_1)
+table(d$gelstix_3m_advev2_sae_1)
+table(d$gelstix_3m_advev3_sae_1)
+
+table(d$gelstix_6m_advev1_sae_1)
+table(d$gelstix_6m_advev2_sae_1)
+table(d$gelstix_6m_advev3_sae_1)
+
+table(d$gelstix_12m_advev1_sae_1)
+table(d$gelstix_12m_advev2_sae_1)
+table(d$gelstix_12m_advev3_sae_1)
 
 # Blinding
-d$quest_cecit_med_6m_1.factor
+table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
+fisher.test(table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor))
