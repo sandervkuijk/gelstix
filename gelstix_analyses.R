@@ -301,7 +301,7 @@ t.test(d$pchange_6m ~ d$plac_gelstix_6m.factor)
 t.test(d$pw1 ~ d$plac_gelstix_6m.factor)
 t.test(d$pm1 ~ d$plac_gelstix_6m.factor)
 t.test(d$pm3 ~ d$plac_gelstix_6m.factor)
-
+t.test(d$pm6 ~ d$plac_gelstix_6m.factor)
 
 # Figure 2
 d$pm3[is.nan(d$pm3)] <- NA
