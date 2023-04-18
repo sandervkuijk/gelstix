@@ -293,10 +293,13 @@ fisher.test(table(mod12$modi12, mod12$rand))
 d$pchange_6m <- round(d$psc - d$pm6, 1)
 sum(is.na(d$pchange_6m))
 aggregate(d$pchange_6m, by = list(d$plac_gelstix_6m.factor), FUN =
-            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 2),
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 t.test(d$pchange_6m ~ d$plac_gelstix_6m.factor)
+# mean between group difference in favor of gelstix was 1.3 (95% CI: 0.1 - 2.5)
+
+(0.07+2.46)/2
 
 t.test(d$pw1 ~ d$plac_gelstix_6m.factor)
 t.test(d$pm1 ~ d$plac_gelstix_6m.factor)
@@ -446,3 +449,11 @@ table(d$gelstix_12m_advev3_sae_1)
 table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor)
 round(prop.table(table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 fisher.test(table(d$quest_cecit_med_6m_1.factor, d$plac_gelstix_6m.factor))
+
+# 12 months change in Pain
+d$pchange_12m <- round(d$psc - d$pm12, 1)
+aggregate(d$pchange_12m, by = list(d$plac_gelstix_6m.factor), FUN =
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 2),
+                          sd = round(sd(x, na.rm = TRUE), 1)))
+
+t.test(d$pchange_6m ~ d$plac_gelstix_6m.factor)
