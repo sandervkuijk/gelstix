@@ -29,7 +29,7 @@
 
 ### Read in data
 setwd("/home/sander/Documents/work/research/gelstix/data")
-load("GELSTIX_data.Rda")
+load("GELSTIX_data_23.Rda")
 table(d$plac_gelstix_6m.factor) # Randomisation
 d <- subset(d, !is.na(d$plac_gelstix_6m.factor)) # Notify Eva
 
@@ -158,12 +158,12 @@ d$eq12 <- eq5d(scores = scores_12, version = "5L", type = "VT",
 rm(scores_12)
 
 # Surgical fear
-View(data.frame(d$feari1_1, d$feari2_1, d$feari3_1, d$feari4_1,
-           d$feari5_1, d$feari6_1, d$feari7_1, d$feari8_1))
+# View(data.frame(d$feari1_1, d$feari2_1, d$feari3_1, d$feari4_1,
+#            d$feari5_1, d$feari6_1, d$feari7_1, d$feari8_1))
 
 d$sfq <- rowSums(data.frame(d$feari1_1, d$feari3_1, d$feari4_1,
                             d$feari5_1, d$feari6_1, d$feari7_1),
-                 na.rm = TRUE)/c(rep(1, 12), 5/6, 1, 5/6, rep(1, 31))
+                 na.rm = TRUE)/c(rep(1, 12), 5/6, 1, 5/6, rep(1, 34))
 
 
 # Pfirrmann

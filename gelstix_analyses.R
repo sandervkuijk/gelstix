@@ -39,53 +39,44 @@ load("GELSTIX_data_final.Rda")
 # load("GELSTIX_subset_imp_final.Rda")
 
 ### Baseline table
+d$plac_gelstix_6m.factor <- relevel(d$plac_gelstix_6m.factor, ref = "Gelstix")
 table(d$plac_gelstix_6m.factor)
 
 # Age
+sum(!is.na(d$ttt_sgage_1))
 aggregate(d$ttt_sgage_1, by = list(d$plac_gelstix_6m.factor), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 # Sex
+sum(!is.na(d$ttt_sgsex_1.factor))
 table(d$ttt_sgsex_1.factor, d$plac_gelstix_6m.factor)
 round(prop.table(table(d$ttt_sgsex_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 
 # BMI
 d$exam_lenght_1[d$exam_lenght_1 == 1.82] <- 182
 d$exam_bmi <- d$exam_weight_1/(d$exam_lenght_1/100)^2
+sum(!is.na(d$exam_bmi))
 aggregate(d$exam_bmi, by = list(d$plac_gelstix_6m.factor), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 # Smoking, never
+sum(!is.na(d$ttt_sj_smo_1.factor))
 table(d$ttt_sj_smo_1.factor, d$plac_gelstix_6m.factor) # Take NO  
 round(prop.table(table(d$ttt_sj_smo_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1) # Take NO
 
 # Smoking, current, amount, and duration
 table(d$ttt_sj_smo_1.factor, d$plac_gelstix_6m.factor)
-table(d$ttt_sj_smo_stop_1, d$plac_gelstix_6m.factor) # Subtract 2 from placebo group
-2/23 # stopped in placebo
-7/23 # ever smoked in pacebo
+table(d$ttt_sj_smo_stop_1, d$plac_gelstix_6m.factor) # Subtract 3 from placebo group
+3/25 # stopped in placebo
+7/25 # ever smoked in pacebo
 aggregate(d$ttt_sj_smo_day_1, by = list(d$plac_gelstix_6m.factor), FUN = summary)
 aggregate(d$ttt_sj_smo_long_1, by = list(d$plac_gelstix_6m.factor), FUN = summary)
 
 # Employment status
 table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor)
 round(prop.table(table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
-
-table(d$es_occuptime_6m_1.factor, d$es_backpain_1)
-
-# table(d$es_legpain_1.factor, d$plac_gelstix_6m.factor)
-# round(prop.table(table(d$es_legpain_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
-# 
-# table(d$es_backpain_6m_1.factor, d$plac_gelstix_6m.factor)
-# round(prop.table(table(d$es_backpain_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
-# 
-# table(d$es_sick_6m_1.factor, d$plac_gelstix_6m.factor)
-# round(prop.table(table(d$es_sick_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
-# 
-# table(d$es_disab_6m_1.factor, d$plac_gelstix_6m.factor)
-# round(prop.table(table(d$es_disab_6m_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 
 # Finger to floor distance
 d$exam_finger_dist_1
@@ -100,11 +91,8 @@ round(prop.table(table(d$exam_shob_1.factor, d$plac_gelstix_6m.factor), 2)*100, 
 # Levels
 table(d$disco_l1_implant_1.factor)
 table(d$disco_l2_implant_1.factor)
-
 table(d$disco_l3_implant_1.factor)
-
 table(d$disco_l4_implant_1.factor)
-
 table(d$disco_l5_implant_1.factor)
 
 d$disco_yn_l5s1.factor
@@ -147,6 +135,9 @@ round(prop.table(table(d$sj_pt_facet_1.factor, d$plac_gelstix_6m.factor), 2)*100
 table(d$sj_pt_stero_1.factor, d$plac_gelstix_6m.factor)
 round(prop.table(table(d$sj_pt_stero_1.factor, d$plac_gelstix_6m.factor), 2)*100, 1)
 
+#
+d$feari1_1
+
 # ODI
 sum(is.na(d$odis))
 aggregate(d$odis, by = list(d$plac_gelstix_6m.factor), FUN =
@@ -160,6 +151,15 @@ aggregate(d$pcs, by = list(d$plac_gelstix_6m.factor), FUN =
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 # SFQ?
+# sel <- ifelse(apply(data.frame(d$feari1_1, d$feari2_1, d$feari3_1, d$feari4_1,
+#                                d$feari5_1, d$feari6_1, d$feari7_1, d$feari8_1),
+#                     1, FUN = function(x) sum(is.na(x))) > 1, 0, 1)
+d$sfqs <- rowSums(data.frame(d$feari1_1, d$feari2_1, d$feari3_1, d$feari4_1,
+                             d$feari5_1, d$feari6_1, d$feari7_1, d$feari8_1))
+aggregate(d$sfqs, by = list(d$plac_gelstix_6m.factor), FUN =
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
+                          sd = round(sd(x, na.rm = TRUE), 1)))
+
 
 # PSEQ
 sum(is.na(d$pses))
@@ -180,18 +180,32 @@ aggregate(d$hads_ds, by = list(d$plac_gelstix_6m.factor), FUN =
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 # MRI time interval
+
 d$mri_date_1 <- as.Date(d$mri_date_1)
 d$gelstix_date_1 <- as.Date(d$gelstix_date_1)
 d$mri_time_int <- difftime(d$gelstix_date_1, d$mri_date_1, units = "days")
 d$mri_time_int[d$mri_time_int < 0] <- NA # One negative value
 
-d$mri_time_int <- as.numeric(d$d$mri_time_int)
+d$mri_time_int <- as.numeric(d$mri_time_int)
 sum(is.na(d$mri_time_int))
 aggregate(d$mri_time_int, by = list(d$plac_gelstix_6m.factor), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE)),
                           sd = round(sd(x, na.rm = TRUE))))
+aggregate(d$mri_time_int, by = list(d$plac_gelstix_6m.factor), FUN = summary)
+
 
 # Pfirman
+d$mri_l1_pf_1.factor
+d$mri_l2_pf_1.factor
+d$mri_l3_pf_1.factor
+d$mri_l4_pf_1.factor
+d$mri_l5_pf_1.factor
+
+d$pfirmaxs <- pmax(d$mri_l1_pf_1, d$mri_l2_pf_1, d$mri_l3_pf_1,
+                   d$mri_l4_pf_1, d$mri_l5_pf_1)
+table(d$pfirmaxs, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$pfirmaxs, d$plac_gelstix_6m.factor), 2)*100, 1)
+
 d$pfir_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_pf_1, NA)
 d$pfir_tr4 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_pf_1, NA)
 d$pfir_tr5 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_pf_1, NA)
@@ -203,6 +217,12 @@ table(pf$pfir, pf$rand)
 round(prop.table(table(pf$pfir, pf$rand), 2)*100, 1)
 
 # Pfirman at 12m
+
+d$pfirmax12 <- pmax(d$mri_l1_pf_12m_1, d$mri_l2_pf_12m_1, d$mri_l3_pf_12m_1,
+                   d$mri_l4_pf_12m_1, d$mri_l5_pf_12m_1)
+table(d$pfirmax12, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$pfirmaxs, d$plac_gelstix_6m.factor), 2)*100, 1)
+
 d$pfir_tr3_12 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_pf_12m_1, NA)
 d$pfir_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_pf_12m_1, NA)
 d$pfir_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_pf_12m_1, NA)
@@ -215,32 +235,36 @@ round(prop.table(table(pf12$pfir, pf12$rand), 2)*100, 1)
 fisher.test(table(pf12$pfir, pf12$rand))
 
 # Disc height
-d$height_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_1, NA)
-d$height_tr4 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_1, NA)
-d$height_tr5 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_heigh_1, NA)
+d$height_tr3b <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_1, NA)
+d$height_tr4b <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_1, NA)
+d$height_tr5b <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_heigh_1, NA)
+heigb <- c(d$height_tr3b, d$height_tr4b, d$height_tr5b)
+
+d$height_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_12m_1, NA)
+d$height_tr4 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_12m_1, NA)
+d$height_tr5 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_heigh_12m_1, NA)
 heig <- c(d$height_tr3, d$height_tr4, d$height_tr5)
 rand <- rep(d$plac_gelstix_6m.factor, 3)
-he <- data.frame(heig, rand)
+he <- data.frame(heigb, heig, rand)
 
-sum(is.na(he$heig))
+sum(!is.na(he$heigb[he$rand == "Gelstix"]))
+sum(!is.na(he$heigb[he$rand == "Placebo"]))
+sum(!is.na(he$heig[he$rand == "Gelstix"]))
+sum(!is.na(he$heig[he$rand == "Placebo"]))
+
+aggregate(he$heigb, by = list(he$rand), FUN =
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
+                          sd = round(sd(x, na.rm = TRUE), 1)))
+
 aggregate(he$heig, by = list(he$rand), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
                           sd = round(sd(x, na.rm = TRUE), 1)))
+t.test(he$heig ~ he$rand)
 
-# Disc height at 12m
-d$height_tr3_12 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_heigh_12m_1, NA)
-d$height_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_heigh_12m_1, NA)
-d$height_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_heigh_12m_1, NA)
-heig12 <- c(d$height_tr3_12, d$height_tr4_12, d$height_tr5_12)
-rand <- rep(d$plac_gelstix_6m.factor, 3)
-he12 <- data.frame(heig12, rand)
+summary(lm(heig ~ rand + heigb, data = he))
 
-sum(is.na(he12$heig12))
-aggregate(he12$heig12, by = list(he12$rand), FUN =
-            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
-                          sd = round(sd(x, na.rm = TRUE), 1)))
-
-t.test(he12$heig12 ~ he12$rand)
+he$delta <- he$heig - he$heigb
+t.test(he$delta ~ he$rand)
 
 # HIZ
 d$hiz_tr3 <- ifelse(d$disco_l3_implant_1.factor == "Yes", d$mri_l3_hiz_1, NA)
@@ -283,11 +307,24 @@ d$mod_tr4_12 <- ifelse(d$disco_l4_implant_1.factor == "Yes", d$mri_l4_modic_12m_
 d$mod_tr5_12 <- ifelse(d$disco_l5_implant_1.factor == "Yes", d$mri_l5_modic_12m_1, NA)
 modi12 <- c(d$mod_tr3_12, d$mod_tr4_12, d$mod_tr5_12)
 rand <- rep(d$plac_gelstix_6m.factor, 3)
-mod12 <- data.frame(modi12, rand)
+mod12 <- data.frame(modi, modi12, rand)
 
 table(mod12$modi12, mod12$rand)
 round(prop.table(table(mod12$modi12, mod12$rand), 2)*100, 1)
 fisher.test(table(mod12$modi12, mod12$rand))
+
+fisher.test(mod12$modi12, mod12$rand)
+
+mod12$modi <- ifelse(mod12$modi == 2, 1, 0)
+mod12$modi12 <- ifelse(mod12$modi12 == 2, 1, 0)
+
+summary(glm(modi12 ~ rand + modi, data = mod12, family = "binomial"))
+
+mod12 <- data.frame(modi, modi12, rand)
+mod12$modi <- ifelse(mod12$modi == 3, 1, 0)
+mod12$modi12 <- ifelse(mod12$modi12 == 3, 1, 0)
+
+summary(glm(modi12 ~ rand + modi, data = mod12, family = "binomial"))
 
 # Analysis of primary outcome
 d$pchange_6m <- round(d$psc - d$pm6, 1)
@@ -342,10 +379,16 @@ aggregate(d$ochange_6m, by = list(d$plac_gelstix_6m.factor), FUN =
 
 t.test(d$ochange_6m ~ d$plac_gelstix_6m.factor)
 
+aggregate(d$odi6, by = list(d$plac_gelstix_6m.factor), FUN =
+            function(x) c(mn = round(mean(x, na.rm = TRUE), 1),
+                          sd = round(sd(x, na.rm = TRUE), 1)))
+t.test(d$odi6 ~ d$plac_gelstix_6m.factor)
+
 t.test(d$odi6[d$plac_gelstix_6m.factor == "Gelstix"],
        d$odis[d$plac_gelstix_6m.factor == "Gelstix"], paired = TRUE)
 t.test(d$odi6[d$plac_gelstix_6m.factor == "Placebo"],
        d$odis[d$plac_gelstix_6m.factor == "Placebo"], paired = TRUE)
+
 # Secondary outcome measures, eq5d
 aggregate(d$eq6, by = list(d$plac_gelstix_6m.factor), FUN =
             function(x) c(mn = round(mean(x, na.rm = TRUE), 2),
@@ -367,6 +410,7 @@ chisq.test(table(d$occ_change, d$plac_gelstix_6m.factor))
 
 d$es_occuptime_6m_1.factor <- factor(d$es_occuptime_6m_1.factor)
 table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor)
+prop.table(table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor), 2)
 chisq.test(table(d$es_occuptime_6m_1.factor, d$plac_gelstix_6m.factor))
 
 # Secondary outcomes: PGIC
@@ -457,3 +501,36 @@ aggregate(d$pchange_12m, by = list(d$plac_gelstix_6m.factor), FUN =
                           sd = round(sd(x, na.rm = TRUE), 1)))
 
 t.test(d$pchange_6m ~ d$plac_gelstix_6m.factor)
+
+# Medication
+# Paracetamol. If all records in the daily CRF are missing, that means they did not check the
+# frequency for that drug and hence, did not take it. All list-wise missing bring the new
+# value parac_time (_b for baseline, _1m for month 1 etc) to 0, and the rest to 1.
+d$parac_b <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_1, d$pd_d2_pfparac1_1,
+                                            d$pd_d3_pfparac1_1, d$pd_d4_pfparac1_1,
+                                            d$pd_d5_pfparac1_1))), 0, 1)
+
+d$parac_1w <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_1w_1, d$pd_d2_pfparac1_1w_1,
+                                             d$pd_d3_pfparac1_1w_1, d$pd_d4_pfparac1_1w_1,
+                                             d$pd_d5_pfparac1_1w_1))), 0, 1)
+
+d$parac_1m <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_1m_1, d$pd_d2_pfparac1_1m_1,
+                                             d$pd_d3_pfparac1_1m_1, d$pd_d4_pfparac1_1m_1,
+                                             d$pd_d5_pfparac1_1m_1))), 0, 1)
+
+d$parac_3m <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_3m_1, d$pd_d2_pfparac1_3m_1,
+                                             d$pd_d3_pfparac1_3m_1, d$pd_d4_pfparac1_3m_1,
+                                             d$pd_d5_pfparac1_3m_1))), 0, 1)
+
+d$parac_6m <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_6m_1, d$pd_d2_pfparac1_6m_1,
+                                             d$pd_d3_pfparac1_6m_1, d$pd_d4_pfparac1_6m_1,
+                                             d$pd_d5_pfparac1_6m_1))), 0, 1)
+
+d$parac_12m <-ifelse(is.na(max.col(data.frame(d$pd_d1_pfparac1_12m_1, d$pd_d2_pfparac1_12m_1,
+                                              d$pd_d3_pfparac1_12m_1, d$pd_d4_pfparac1_12m_1,
+                                              d$pd_d5_pfparac1_12m_1))), 0, 1)
+
+# Then, a between group difference can easily be observed, if any:
+table(d$parac_6m, d$plac_gelstix_6m.factor)
+round(prop.table(table(d$parac_6m, d$plac_gelstix_6m.factor), 2)*100, 1) # in %
+
